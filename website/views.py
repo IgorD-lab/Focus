@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, flash
 from flask_login import login_required, current_user
 from .models import Note
 from . import db
+import json
 
 views = Blueprint('views', __name__)
 
@@ -20,3 +21,9 @@ def index():
             flash('Note added!', category='success')
 
     return render_template("index.html", user=current_user)
+
+@views.route('/delete-note', methods=['POST'])
+def delete_note():
+    note = json.loads(request.data)
+    noteId = data['note'] # safkslmdmdslfkmdslfl
+    note = Note.query.get(noteId)
