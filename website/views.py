@@ -11,6 +11,13 @@ views = Blueprint('views', __name__)
 def index():
     return render_template("index.html", user=current_user)
 
+@views.route('/todo', methods=['GET','POST'])
+@login_required
+def todo():
+    if request.method == 'POST': 
+        pass
+    return render_template("todo.html", user=current_user)
+
 @views.route('/notes', methods=['GET', 'POST'])
 @login_required
 def notes():
