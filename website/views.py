@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash
+from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
 from .models import Note
 from . import db
@@ -24,6 +24,12 @@ def index():
 
 @views.route('/delete-note', methods=['POST'])
 def delete_note():
-    note = json.loads(request.data)
-    noteId = data['note'] # safkslmdmdslfkmdslfl
-    note = Note.query.get(noteId)
+    note = json.loads(request.data) # load note id from index.js
+    noteId = note['noteId'] # set noteId to be nodeId passed in data
+    note = Note.query.get(noteId) # look for note that has that id
+    if note: # if note with id exists
+        if note.user_id == current_user.id: # if user owns this note
+            db.session.delete(note) # delete note
+            db.session.commit()
+    
+    return jsonify({}) # turn empty python dict into json object and return, we have to return something

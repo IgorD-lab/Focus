@@ -1,5 +1,5 @@
 function deleteNote(noteId) {
-  // take note id that was passed
+  // take note id that was passed in index.html
   fetch("/delete-note", {
     // send post request to delete note endpoint
     method: "POST",
