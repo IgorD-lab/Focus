@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
-from .models import Note
+from .models import Note, TodoItem
 from . import db
 import json
 
@@ -11,12 +11,23 @@ views = Blueprint('views', __name__)
 def index():
     return render_template("index.html", user=current_user)
 
-@views.route('/todo', methods=['GET','POST'])
+@views.route('/todo', methods=['GET', 'POST'])
 @login_required
 def todo():
-    if request.method == 'POST': 
-        pass
+    if request.method == 'POST':
+        title = request.form.get('title')
+        description = request.form.get('description')
+
+        if title and description:
+            todo_item = TodoItem(title=title, description=description, user_id=current_user.id)
+            db.session.add(todo_item)
+            db.session.commit()
+            flash('Todo item added!', category='success')
+        else:
+            flash('Please provide both a title and description for the todo item.', category='error')
+
     return render_template("todo.html", user=current_user)
+
 
 @views.route('/notes', methods=['GET', 'POST'])
 @login_required
