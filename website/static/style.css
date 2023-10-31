@@ -1,0 +1,7 @@
+.nav-item.nav-link.me-auto {
+  float: right;
+}
+
+.move-to-right {
+  justify-content: right;
+}

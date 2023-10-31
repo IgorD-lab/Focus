@@ -29,14 +29,18 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbar">
-        <div class="navbar-nav">
+        <div class="navbar-nav me-auto">
           <!-- show different navbar if user is logged in -->
           {% if user.is_authenticated %}
           <a class="nav-item nav-link" id="home" href="/">Home</a>
           <a class="nav-item nav-link" id="home" href="/todo">Todo</a>
           <a class="nav-item nav-link" id="home" href="/notes">Notes</a>
           <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
-          <a class="nav-item nav-link" id="logout" href="/">{{ }}</a>
+          <div class="nav-item me-auto">
+            <span class="nav-item nav-link me-auto" id="username"
+              >User: {{ user.username }}</span
+            >
+          </div>
           {% else %}
           <a class="nav-item nav-link" id="login" href="/login">Login</a>
           <a class="nav-item nav-link" id="register" href="/register"
