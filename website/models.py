@@ -11,7 +11,11 @@ class Note(db.Model): # db.Model tells db that all notes must have below values
     user_id = db.Column(db.Integer, db.ForeignKey('user.id')) # reference column of another database, stores integer so db.Integer,
     # db.ForeignKey means we must pass id of existing user when we create note object (one to many relationship), one user has many notes,
     # lower case user because User in sql is seen as user and .id for id of user .email would be if we connected them by user email
-
+class Todo(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(50), nullable=False)
+    description = db.Column(db.String(500), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 class User(db.Model, UserMixin): # UserMixin must be inherited in User object to use flask_login
     id = db.Column(db.Integer, primary_key=True) # Unique integer that defines user member
     email = db.Column(db.String(150), unique=True) # string size must be defined, 2 users cant have same email
@@ -19,9 +23,5 @@ class User(db.Model, UserMixin): # UserMixin must be inherited in User object to
     username = db.Column(db.String(150))
     notes = db.relationship('Note') # connect user with their notes, we can access all the notes user created with this column, 
     # Note for relationship in sql if it was foreign key we would use note lowercase (dumb design)
+    todo= db.relationship('Todo')
 
-class TodoItem(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(50), nullable=False)
-    description = db.Column(db.String(500), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)

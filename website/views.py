@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
-from .models import Note, TodoItem
+from .models import Note, Todo
 from . import db
 import json
 
@@ -19,7 +19,7 @@ def todo():
         description = request.form.get('description')
 
         if title and description:
-            todo_item = TodoItem(title=title, description=description, user_id=current_user.id)
+            todo_item = Todo(title=title, description=description, user_id=current_user.id)
             db.session.add(todo_item)
             db.session.commit()
             flash('Todo item added!', category='success')
@@ -27,6 +27,17 @@ def todo():
             flash('Please provide both a title and description for the todo item.', category='error')
 
     return render_template("todo.html", user=current_user)
+
+@views.route('/delete-todo', methods=['POST'])
+def delete_todo():
+    todo = json.loads(request.data) 
+    todoId = todo['todoId']
+    todo = Todo.query.get(todoId) 
+    if todo: 
+        if todo.user_id == current_user.id: 
+            db.session.delete(todo)
+            db.session.commit()
+    return jsonify({})
 
 
 @views.route('/notes', methods=['GET', 'POST'])

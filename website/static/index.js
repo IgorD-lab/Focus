@@ -8,3 +8,14 @@ function deleteNote(noteId) {
     window.location.href = "/"; // redirect to home page (refresh page)
   });
 }
+
+function deleteTodo(todoId) {
+  // take note id that was passed in index.html
+  fetch("/delete-todo", {
+    // send post request to delete note endpoint
+    method: "POST",
+    body: JSON.stringify({ todoId: todoId }),
+  }).then((_res) => {
+    window.location.href = "/"; // redirect to home page (refresh page)
+  });
+}
