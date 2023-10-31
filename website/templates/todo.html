@@ -59,12 +59,22 @@
           <hr />
           <div>
             {% for todo in user.todo %}
-            <li class="list-group-item">
-                {{ todo.title }}
-                <button type="button" class="close" onClick="deleteTodo('{{ todo.id }}')">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </li>
+            <div class="card mb-3">
+              <div class="card-body">
+              
+              <div class="row">
+                <div class="col-sm-3 text-left">
+                  <p>{{ todo.title }}</p>
+                </div>
+                <div class="col-sm-7 text-left">
+                  <p>{{ todo.description }}</p>
+                </div>
+                <div class="col-sm-2 text-right">
+                  <a href="#" onclick="deleteTodo('{{ todo.id }}')" class="btn btn-danger ml-5"><span aria-hidden="true">&times;</span></a>
+                </div>
+              </div>
+             </div>
+            </div>
             {% endfor %}
           </div>
         </div>
