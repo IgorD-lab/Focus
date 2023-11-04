@@ -1,48 +1,53 @@
 {% extends "layout.html" %} {% block title %}Register{% endblock %} {% block
 content %}
-<form method="POST">
-  <h3 align="center">Register</h3>
-  <div class="form-group">
-    <labe for="email">Email Address</labe>
+<form method="POST" class="flex flex-col items-center">
+  <h3 class="text-center text-3xl">Register</h3>
+  <div class="my-4">
+    <label for="email" class="block mb-2">Email Address</label>
     <input
       type="email"
-      class="form-control"
+      class="border-2 border-gray-200 rounded w-full py-2 px-4"
       id="email"
       name="email"
       placeholder="Enter email"
     />
   </div>
-  <div class="form-group">
-    <labe for="username">Username</labe>
+  <div class="my-4">
+    <label for="username" class="block mb-2">Username</label>
     <input
       type="text"
-      class="form-control"
+      class="border-2 border-gray-200 rounded w-full py-2 px-4"
       id="username"
       name="username"
       placeholder="Enter username"
     />
   </div>
-  <div class="form-group">
-    <labe for="password">Password</labe>
+  <div class="my-4">
+    <label for="password" class="block mb-2">Password</label>
     <input
       type="password"
-      class="form-control"
+      class="border-2 border-gray-200 rounded w-full py-2 px-4"
       id="password"
       name="password"
       placeholder="Enter password"
     />
   </div>
-  <div class="form-group">
-    <labe for="confirm">Confirm Password</labe>
+  <div class="my-4">
+    <label for="confirm" class="block mb-2">Confirm Password</label>
     <input
       type="password"
-      class="form-control"
+      class="border-2 border-gray-200 rounded w-full py-2 px-4"
       id="confirm"
       name="confirm"
       placeholder="Confirm password"
     />
   </div>
   <br />
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button
+    type="submit"
+    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+  >
+    Submit
+  </button>
 </form>
 {% endblock %}
