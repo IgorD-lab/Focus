@@ -15,6 +15,7 @@
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="./static/style.css" />
     <title>{% block title %}Layout error{% endblock %}</title>
     <!-- allow Home to be overwritten using jinja -->
   </head>
@@ -70,6 +71,7 @@
     {% endif %} {% endfor %} {% endif %} {% endwith %}
     <div class="container">{% block content %}{% endblock %}</div>
     <!-- ---------------------------------------------------------------- -->
+
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -85,27 +87,7 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    {% block javascript %}
-    <script type="text/javascript">
-      function deleteNote(noteId) {
-        fetch("/delete-note", {
-          method: "POST",
-          body: JSON.stringify({ noteId: noteId }),
-        }).then((_res) => {
-          window.location.href = "/notes";
-        });
-      }
-      function deleteTodo(todoId) {
-        // take note id that was passed in index.html
-        fetch("/delete-todo", {
-          // send post request to delete note endpoint
-          method: "POST",
-          body: JSON.stringify({ todoId: todoId }),
-        }).then((_res) => {
-          window.location.href = "/todo"; // redirect to home page (refresh page)
-        });
-      }
-    </script>
-    {% endblock %}
+    <script src="./static/script.js"></script>
+    <script src="./static/flash.js"></script>
   </body>
 </html>

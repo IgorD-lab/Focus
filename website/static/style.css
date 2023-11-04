@@ -1,7 +1,3 @@
-.nav-item.nav-link.me-auto {
-  float: right;
-}
-
-.move-to-right {
-  justify-content: right;
+body {
+  margin-bottom: 20px;
 }

@@ -5,7 +5,7 @@ function deleteNote(noteId) {
     method: "POST",
     body: JSON.stringify({ noteId: noteId }),
   }).then((_res) => {
-    window.location.href = "/"; // redirect to home page (refresh page)
+    window.location.href = "/notes"; // redirect to home page (refresh page)
   });
 }
 
@@ -16,6 +16,15 @@ function deleteTodo(todoId) {
     method: "POST",
     body: JSON.stringify({ todoId: todoId }),
   }).then((_res) => {
-    window.location.href = "/"; // redirect to home page (refresh page)
+    window.location.href = "/todo"; // redirect to home page (refresh page)
+  });
+}
+
+function completeTodo(todoId) {
+  fetch("/complete-todo", {
+    method: "POST",
+    body: JSON.stringify({ todoId: todoId }),
+  }).then((_res) => {
+    window.location.href = "/todo";
   });
 }

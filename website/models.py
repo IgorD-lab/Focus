@@ -15,6 +15,7 @@ class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(50), nullable=False)
     description = db.Column(db.String(500), nullable=False)
+    completed = db.Column(db.Boolean, default=False, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 class User(db.Model, UserMixin): # UserMixin must be inherited in User object to use flask_login
     id = db.Column(db.Integer, primary_key=True) # Unique integer that defines user member
