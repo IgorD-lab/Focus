@@ -34,6 +34,7 @@
           <!-- show different navbar if user is logged in -->
           {% if user.is_authenticated %}
           <a class="nav-item nav-link" id="home" href="/">Home</a>
+          <a class="nav-item nav-link" id="logout" href="/timer">Timer</a>
           <a class="nav-item nav-link" id="home" href="/todo">Todo</a>
           <a class="nav-item nav-link" id="home" href="/notes">Notes</a>
           <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
@@ -89,5 +90,6 @@
     ></script>
     <script src="./static/script.js"></script>
     <script src="./static/flash.js"></script>
+    <script src="./static/timer.js"></script>
   </body>
 </html>

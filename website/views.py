@@ -11,6 +11,11 @@ views = Blueprint('views', __name__)
 def index():
     return render_template("index.html", user=current_user)
 
+@views.route('/timer', methods=['GET'])
+@login_required
+def timer():
+    return render_template("timer.html", user=current_user)
+
 @views.route('/todo', methods=['GET', 'POST'])
 @login_required
 def todo():
