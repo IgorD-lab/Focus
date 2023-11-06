@@ -1,55 +1,123 @@
 {% extends "layout.html" %} {% block title %}Timer{% endblock %} {% block
 content %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pomodoro Timer</title>
+<body class="h-full bg-primary text-font font-sans">
+  <section class="h-full flex items-center">
+    <div
+      class="mx-auto w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-4 sm:px-8 flex flex-col items-center justify-center"
+    >
+      <h1 class="text-4xl">pomodoro</h1>
 
-    <!-- ICONS -->
-    <script
-      src="https://kit.fontawesome.com/6f3103b13c.js"
-      crossorigin="anonymous"
-    ></script>
+      <div
+        id="painel"
+        class="grid grid-cols-2 text-center w-64 my-20 py-4 rounded-full shadow"
+      >
+        <p id="work" class="opacity-80 transition duration-1000">work</p>
+        <p id="break" class="opacity-80 transition duration-1000">break</p>
+      </div>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="./static/css/timer.css" />
-  </head>
-  <body>
-    <section>
-      <div class="container">
-        <h1>pomodoro</h1>
-
-        <div class="painel">
-          <p id="work">work</p>
-          <p id="break">break</p>
-        </div>
-
-        <div class="timer">
-          <div class="circle">
-            <div class="time">
-              <p id="minutes"></p>
-              <p>:</p>
-              <p id="seconds"></p>
-            </div>
+      <div
+        id="timer"
+        class="flex items-center justify-center w-80 h-80 rounded-full shadow"
+      >
+        <div
+          class="flex items-center justify-center w-72 h-72 rounded-full bg-secondary relative"
+        >
+          <div id="time" class="relative flex flex-row">
+            <p id="minutes" class="text-8xl"></p>
+            <p class="relative text-8xl -top-2 mx-4">:</p>
+            <p id="seconds" class="text-8xl"></p>
           </div>
         </div>
-
-        <div class="controls">
-          <button id="start" onclick="start()">
-            <i class="fa-solid fa-play"></i>
-          </button>
-
-          <a id="reset" href="./"
-            ><i class="fa-solid fa-arrow-rotate-left"></i
-          ></a>
-        </div>
       </div>
-    </section>
 
-    <!-- SCRIPT -->
-  </body>
-</html>
+      <div class="mt-12">
+        <button
+          id="start"
+          class="border-none bg-transparent cursor-pointer"
+          onclick="start()"
+        >
+          Start
+          <i class="fa-solid fa-play text-6xl"></i>
+        </button>
+
+        <a id="reset" href="./" class="hidden">
+          <i class="fa-solid fa-arrow-rotate-left text-6xl"></i>
+        </a>
+
+        <script>
+          // variables
+          let workTittle = document.getElementById("work");
+          let breakTittle = document.getElementById("break");
+
+          let workTime = 25;
+          let breakTime = 5;
+
+          let seconds = "00";
+
+          // display
+          window.onload = () => {
+            document.getElementById("minutes").innerHTML = workTime;
+            document.getElementById("seconds").innerHTML = seconds;
+
+            workTittle.classList.add("active");
+          };
+
+          // start timer
+          function start() {
+            // change button
+            document.getElementById("start").style.display = "none";
+            document.getElementById("reset").style.display = "block";
+
+            // change the time
+            seconds = 59;
+
+            let workMinutes = workTime - 1;
+            let breakMinutes = breakTime - 1;
+
+            breakCount = 0;
+
+            // countdown
+            let timerFunction = () => {
+              //change the display
+              document.getElementById("minutes").innerHTML = workMinutes;
+              document.getElementById("seconds").innerHTML = seconds;
+
+              // start
+              seconds = seconds - 1;
+
+              if (seconds === 0) {
+                workMinutes = workMinutes - 1;
+                if (workMinutes === -1) {
+                  if (breakCount % 2 === 0) {
+                    // start break
+                    workMinutes = breakMinutes;
+                    breakCount++;
+
+                    // change the painel
+                    workTittle.classList.remove("active");
+                    breakTittle.classList.add("active");
+                  } else {
+                    // continue work
+                    workMinutes = workTime;
+                    breakCount++;
+
+                    // change the painel
+                    breakTittle.classList.remove("active");
+                    workTittle.classList.add("active");
+                  }
+                }
+                seconds = 59;
+              }
+            };
+
+            // start countdown
+            setInterval(timerFunction, 1000); // 1000 = 1s
+          }
+        </script>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCRIPT -->
+</body>
 {% endblock %}

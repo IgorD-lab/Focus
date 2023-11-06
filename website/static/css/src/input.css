@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .painel p.active {
+    @apply opacity-100 text-secondary;
+  }
+}
