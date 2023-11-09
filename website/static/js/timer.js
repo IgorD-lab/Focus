@@ -1,68 +1,207 @@
-// variables
-let workTittle = document.getElementById("work");
-let breakTittle = document.getElementById("break");
+(function () {
+  /********************************************************************************
+   * Declare vars
+   ********************************************************************************/
 
-let workTime = 25;
-let breakTime = 5;
+  const fehBody = document.body;
+  const workDurationInput = document.getElementById("work-duration");
+  const restDurationInput = document.getElementById("rest-duration");
+  const circleProgress = document.querySelector(".circle-progress");
+  const timerTime = document.getElementById("feh-timer-time");
 
-let seconds = "00";
+  const btnToggleSettings = document.getElementById("feh-toggle-settings");
+  const btnCloseSettings = document.getElementById("feh-close-settings");
 
-// display
-window.onload = () => {
-  document.getElementById("minutes").innerHTML = workTime;
-  document.getElementById("seconds").innerHTML = seconds;
+  let workDuration = parseInt(workDurationInput.value) * 60;
+  let restDuration = parseInt(restDurationInput.value) * 60;
+  let remainingTime = workDuration;
+  let isPaused = true;
+  let isWorking = true;
+  let intervalId;
 
-  workTittle.classList.add("active");
-};
+  const completedSessionsElement = document.getElementById(
+    "feh-completed-sessions"
+  );
+  let completedSessions = 0;
 
-// start timer
-function start() {
-  // change button
-  document.getElementById("start").style.display = "none";
-  document.getElementById("reset").style.display = "block";
+  /********************************************************************************
+   * Pomodoro overlay screen
+   ********************************************************************************/
 
-  // change the time
-  seconds = 59;
+  window.addEventListener("load", () => {
+    fehBody.classList.add("page-loaded");
+  });
 
-  let workMinutes = workTime - 1;
-  let breakMinutes = breakTime - 1;
+  /********************************************************************************
+   * Toggle settings screen
+   ********************************************************************************/
 
-  breakCount = 0;
+  function setBodySettings() {
+    fehBody.classList.contains("settings-active")
+      ? fehBody.classList.remove("settings-active")
+      : fehBody.classList.add("settings-active");
+  }
 
-  // countdown
-  let timerFunction = () => {
-    //change the display
-    document.getElementById("minutes").innerHTML = workMinutes;
-    document.getElementById("seconds").innerHTML = seconds;
-
-    // start
-    seconds = seconds - 1;
-
-    if (seconds === 0) {
-      workMinutes = workMinutes - 1;
-      if (workMinutes === -1) {
-        if (breakCount % 2 === 0) {
-          // start break
-          workMinutes = breakMinutes;
-          breakCount++;
-
-          // change the painel
-          workTittle.classList.remove("active");
-          breakTittle.classList.add("active");
-        } else {
-          // continue work
-          workMinutes = workTime;
-          breakCount++;
-
-          // change the painel
-          breakTittle.classList.remove("active");
-          workTittle.classList.add("active");
-        }
-      }
-      seconds = 59;
+  function toggleSettings() {
+    if (event.type === "click") {
+      setBodySettings();
+    } else if (event.type === "keydown" && event.keyCode === 27) {
+      fehBody.classList.remove("settings-active");
     }
-  };
+  }
 
-  // start countdown
-  setInterval(timerFunction, 1000); // 1000 = 1s
-}
+  btnToggleSettings.addEventListener("click", toggleSettings);
+  btnCloseSettings.addEventListener("click", toggleSettings);
+  document.addEventListener("keydown", toggleSettings);
+
+  /********************************************************************************
+   * Play button is clicked + start timer
+   ********************************************************************************/
+
+  const startBtn = document.getElementById("start-btn");
+  startBtn.addEventListener("click", () => {
+    isPaused = false;
+
+    fehBody.classList.add("timer-running");
+
+    /**
+     * Is work timer
+     */
+    if (isWorking) {
+      fehBody.classList.remove("timer-paused");
+    } else {
+      /**
+       * or rest timer
+       */
+      fehBody.classList.add("rest-mode");
+      fehBody.classList.remove("timer-paused");
+    }
+
+    if (!intervalId) {
+      intervalId = setInterval(updateTimer, 1000);
+    }
+  });
+
+  /********************************************************************************
+   * Pause button is clicked
+   ********************************************************************************/
+
+  const pauseBtn = document.getElementById("pause-btn");
+  pauseBtn.addEventListener("click", () => {
+    isPaused = true;
+
+    fehBody.classList.remove("timer-running");
+    fehBody.classList.add("timer-paused");
+
+    // document.title = "Timer Paused";
+  });
+
+  /********************************************************************************
+   * Get work / rest times from settings
+   ********************************************************************************/
+
+  workDurationInput.addEventListener("change", () => {
+    workDuration = parseInt(workDurationInput.value) * 60;
+    if (isWorking) {
+      remainingTime = workDuration;
+      updateProgress();
+    }
+  });
+
+  restDurationInput.addEventListener("change", () => {
+    restDuration = parseInt(restDurationInput.value) * 60;
+    if (!isWorking) {
+      remainingTime = restDuration;
+      updateProgress();
+    }
+  });
+
+  /********************************************************************************
+   * Timer
+   ********************************************************************************/
+
+  function updateTimer() {
+    const workFinished = new Audio(
+      "./static/music/success-fanfare-trumpets-6185.mp3"
+    );
+    const restFinished = new Audio(
+      "./static/music/error-when-entering-the-game-menu-132111.mp3"
+    );
+
+    if (!isPaused) {
+      remainingTime--;
+
+      /**
+       * When timer stops running
+       */
+      if (remainingTime <= 0) {
+        isWorking = !isWorking;
+        remainingTime = isWorking ? workDuration : restDuration;
+
+        /**
+         * Check what timer (work/rest) has just finished
+         */
+        if (!isWorking) {
+          /**
+           * Increment the completed sessions counter and update the display
+           */
+          fehBody.classList.add("rest-mode");
+          fehBody.classList.remove("timer-running");
+
+          completedSessions++;
+          completedSessionsElement.textContent = completedSessions;
+
+          console.log(completedSessions);
+        } else {
+          fehBody.classList.remove("rest-mode");
+          fehBody.classList.remove("timer-running");
+        }
+
+        /**
+         * Switch alarm depending on pomodoro or rest period
+         */
+        playAlarm = isWorking ? restFinished : workFinished;
+        playAlarm.play();
+
+        /**
+         * Timer has finished
+         */
+        isPaused = true;
+        fehBody.classList.remove("timer-work-active");
+      }
+
+      document.title = timerTime.textContent = formatTime(remainingTime);
+
+      updateProgress();
+    }
+  }
+
+  /********************************************************************************
+   * Update circle progress
+   ********************************************************************************/
+
+  function updateProgress() {
+    const radius = 45;
+    const circumference = 2 * Math.PI * radius;
+
+    const totalDuration = isWorking ? workDuration : restDuration;
+    const dashOffset = (circumference * remainingTime) / totalDuration;
+
+    circleProgress.style.strokeDashoffset = dashOffset;
+    timerTime.textContent = formatTime(remainingTime);
+  }
+
+  /********************************************************************************
+   * Format time
+   ********************************************************************************/
+
+  function formatTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes.toString().padStart(2, "0")}:${remainingSeconds
+      .toString()
+      .padStart(2, "0")}`;
+  }
+
+  updateProgress();
+})();
