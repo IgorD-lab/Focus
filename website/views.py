@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
-from .models import Note, Todo
+from .models import Note, Todo, Quiz
 from . import db
 import json
 
@@ -86,3 +86,18 @@ def delete_note():
             db.session.commit()
     
     return jsonify({}) # turn empty python dict into json object and return, we have to return something
+
+@views.route('/quiz', methods=['GET', 'POST'])
+def quiz():
+   if request.method == 'POST':
+        question = request.form.get('question')
+        answer = request.form.get('answer')
+        if question and answer:
+            quiz_item = Quiz(question=question, answer=answer, user_id=current_user.id)
+            db.session.add(quiz_item)
+            db.session.commit()
+            flash('Quiz item added!', category='success')
+        else:
+            flash('Please provide both a question and answer for the question item.', category='error')
+
+   return render_template('quiz.html', user=current_user)

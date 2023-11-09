@@ -67,6 +67,11 @@
             >Notes</a
           >
           <a
+            href="/quiz"
+            class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-white mr-4"
+            >Quiz</a
+          >
+          <a
             href="/logout"
             class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-white"
             >Logout</a
@@ -93,21 +98,26 @@
     {% with messages = get_flashed_messages(with_categories=true) %} {% if
     messages %} {% for category, message in messages %} {% if category== 'error'
     %}
-    <div class="bg-red-500 text-white px-6 py-4 border-0 rounded relative mb-4">
+    <div
+      class="bg-red-500 text-white px-6 py-4 border-0 rounded relative mb-4 alert alert-danger alter-dismissable fade show flex justify-between items-center"
+      role="alert"
+    >
       {{ message }}
-      <button type="button" class="close">
+      <button type="button" class="close" data-dismiss="alert">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     {% else %}
     <div
-      class="bg-green-500 text-white px-6 py-4 border-0 rounded relative mb-4"
+      class="bg-green-500 text-white px-6 py-4 border-0 rounded relative mb-4 alert alert-success alter-dismissable fade show flex justify-between items-center"
+      role="alert"
     >
-      {{ message }}
-      <button type="button" class="close">
+      <span>{{ message }}</span>
+      <button type="button" class="close" data-dismiss="alert">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
+
     {% endif %} {% endfor %} {% endif %} {% endwith %}
     <div class="container mx-auto">{% block content %}{% endblock %}</div>
 

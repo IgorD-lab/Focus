@@ -1,0 +1,39 @@
+{% extends "layout.html" %} {% block title %}Quiz{% endblock %} {% block content
+%}
+<h1 class="text-center text-3xl">Quiz</h1>
+
+<form id="form-Quiz" method="POST">
+  <div class="mb-4 mt-4">
+    <input
+      type="text"
+      id="question"
+      name="question"
+      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+      maxlength="50"
+      autocomplete="off"
+      placeholder="Your question"
+      required
+    />
+  </div>
+  <div class="mb-4">
+    <textarea
+      id="answer"
+      name="answer"
+      cols="30"
+      rows="10"
+      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+      maxlength="500"
+      autocomplete="off"
+      placeholder="Your answer"
+      required
+    ></textarea>
+  </div>
+  <button
+    type="submit"
+    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+  >
+    Save
+  </button>
+</form>
+
+{% endblock %}

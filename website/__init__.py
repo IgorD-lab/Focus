@@ -20,7 +20,7 @@ def create_app():
     app.register_blueprint(views, url_prefix='/') #register blueprints
     app.register_blueprint(auth, url_prefix='/')
 
-    from .models import User, Note, Todo # not actually importing we just declare function prototypes before we create database
+    from .models import User, Note, Todo, Quiz # not actually importing we just declare function prototypes before we create database
 
     with app.app_context():
         db.create_all() # call function

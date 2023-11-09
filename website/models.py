@@ -17,6 +17,11 @@ class Todo(db.Model):
     description = db.Column(db.String(500), nullable=False)
     completed = db.Column(db.Boolean, default=False, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+class Quiz(db.Model):
+   id = db.Column(db.Integer, primary_key=True)
+   question = db.Column(db.String(200), nullable=False)
+   answer = db.Column(db.String(200), nullable=False)
+   user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 class User(db.Model, UserMixin): # UserMixin must be inherited in User object to use flask_login
     id = db.Column(db.Integer, primary_key=True) # Unique integer that defines user member
     email = db.Column(db.String(150), unique=True) # string size must be defined, 2 users cant have same email
