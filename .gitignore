@@ -1,1 +1,26 @@
-__pycache__
+# # Ignore Python cache files
+# __pycache__/
+# *.py[cod]
+# .venv/
+# *.pyc
+
+# # Ignore temporary files
+# tempCodeRunnerFile.py
+
+# # Ignore environment files
+# tailwind.config.js
+# tailwind.txt
+# tailwindcss.ext
+
+# # Ignore static files
+# # static/music/
+# # static/css/src/
+# # website/static/
+
+# # Ignore system files
+# .DS_Store
+# Thumbs.db
+
+# # Ignore database
+# database.db
+

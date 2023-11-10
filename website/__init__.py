@@ -11,6 +11,7 @@ DB_NAME = 'database.db' # database name
 def create_app():
     app = Flask(__name__) # initialise flask
     app.config['SECRET_KEY'] = 'banana' # encrypt cookies and session 
+    app.config["TEMPLATES_AUTO_RELOAD"] = True
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}' # tell flask that we are using this db and where db is located
     db.init_app(app) # initialise database tell it that we are going to use app with it
      

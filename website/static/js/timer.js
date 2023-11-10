@@ -121,12 +121,8 @@
    ********************************************************************************/
 
   function updateTimer() {
-    const workFinished = new Audio(
-      "./static/music/success-fanfare-trumpets-6185.mp3"
-    );
-    const restFinished = new Audio(
-      "./static/music/error-when-entering-the-game-menu-132111.mp3"
-    );
+    const workFinished = new Audio("./static/music/update.mp3");
+    const restFinished = new Audio("./static/music/girl_scream.mp3");
 
     if (!isPaused) {
       remainingTime--;
