@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, jsonify
+from flask import Blueprint, render_template, request, flash, jsonify, redirect
 from flask_login import login_required, current_user
 from .models import Note, Todo, Quiz
 from . import db
@@ -88,6 +88,7 @@ def delete_note():
     return jsonify({}) # turn empty python dict into json object and return, we have to return something
 
 @views.route('/quiz', methods=['GET', 'POST'])
+@login_required
 def quiz():
    if request.method == 'POST':
         question = request.form.get('question')
@@ -101,3 +102,22 @@ def quiz():
             flash('Please provide both a question and answer for the question item.', category='error')
 
    return render_template('quiz.html', user=current_user)
+
+@views.route('/quiz-questions', methods=['GET','POST'])
+@login_required
+def quiz_questions():
+    if request.method == 'POST':
+        pass
+    
+    return render_template('quiz-questions.html', user=current_user)
+
+@views.route('/delete-quiz', methods=['POST'])
+def delete_quiz():
+    quiz = json.loads(request.data) 
+    quizId = quiz['quizId'] 
+    quiz = Quiz.query.get(quizId) 
+    if quiz: 
+        if quiz.user_id == current_user.id: 
+            db.session.delete(quiz) 
+            db.session.commit()
+    return jsonify({})

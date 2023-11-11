@@ -28,3 +28,14 @@ function completeTodo(todoId) {
     window.location.href = "/todo";
   });
 }
+
+function deleteQuiz(quizId) {
+  // take note id that was passed in index.html
+  fetch("/delete-quiz", {
+    // send post request to delete note endpoint
+    method: "POST",
+    body: JSON.stringify({ quizId: quizId }),
+  }).then((_res) => {
+    window.location.href = "/quiz"; // redirect to home page (refresh page)
+  });
+}
