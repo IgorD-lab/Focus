@@ -1,5 +1,6 @@
-from flask import Blueprint, render_template, request, flash, jsonify, redirect
+from flask import Blueprint, render_template, request, flash, jsonify, redirect, session 
 from flask_login import login_required, current_user
+from sqlalchemy.sql import func
 from .models import Note, Todo, Quiz
 from . import db
 import json
@@ -103,13 +104,32 @@ def quiz():
 
    return render_template('quiz.html', user=current_user)
 
-@views.route('/quiz-questions', methods=['GET','POST'])
+@views.route('/quiz-questions', methods=['GET', 'POST'])
 @login_required
 def quiz_questions():
+    if 'quiz_id' not in session or request.method == 'POST':
+        # If quiz_id is not in the session or the form is submitted, fetch a new question
+        question = Quiz.query.order_by(func.random()).first()
+        session['quiz_id'] = question.id
+    else:
+        # If quiz_id is in the session and the form is not submitted, retrieve the question using quiz_id
+        question = Quiz.query.get(session['quiz_id'])
+
     if request.method == 'POST':
-        pass
-    
-    return render_template('quiz-questions.html', user=current_user)
+        answer = request.form.get('answer').strip().lower()
+        print(f"Database answer: '{question.answer}', User answer: '{answer}'")
+        if question.answer.strip().lower() == answer:
+            flash('Correct answer', category='success')
+            print('Correct')
+        else:
+            flash('Wrong answer', category='error')
+            print('Error')
+        session.pop('quiz_id', None)
+
+    return render_template('quiz-questions.html', user=current_user, question=question)
+
+
+
 
 @views.route('/delete-quiz', methods=['POST'])
 def delete_quiz():
