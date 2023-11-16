@@ -30,4 +30,5 @@ class User(db.Model, UserMixin): # UserMixin must be inherited in User object to
     notes = db.relationship('Note') # connect user with their notes, we can access all the notes user created with this column, 
     # Note for relationship in sql if it was foreign key we would use note lowercase (dumb design)
     todo= db.relationship('Todo')
+    quiz = db.relationship('Quiz')
 

@@ -35,7 +35,53 @@
     >
       Save
     </button>
+    <button
+      type="button"
+      id="goToQuizQuestions"
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+    >
+      Go to Quiz Questions
+    </button>
   </form>
-</div>
+  <div class="w-full">
+    <div class="flex items-center justify-between px-3 py-2">
+      <p class="font-semibold">Title</p>
+      <p class="font-semibold">Description</p>
+      <p class="font-semibold text-right">Delete</p>
+    </div>
+    <hr />
+    <div>
+      <ul class="list-disc">
+        {% for quiz in user.quiz %}
+        <div class="shadow rounded-lg mb-3 bg-gray-150">
+          <div class="p-4">
+            <div class="flex items-center justify-between">
+              <div class="flex-1">
+                <p>{{ quiz.question }}</p>
+              </div>
+              <div class="flex-1">
+                <p class="break-all">{{ quiz.answer }}</p>
+              </div>
+              <div class="flex-1 text-right">
+                <a
+                  href="#"
+                  onclick="deleteQuiz('{{ quiz.id }}')"
+                  class="ml-5 text-white bg-red-500 rounded-full p-2"
+                  ><span aria-hidden="true">&times;</span></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <script>
+    document.getElementById("goToQuizQuestions").onclick = function () {
+      window.location.href = "/quiz-questions";
+    };
+  </script>
 
-{% endblock %}
+  {% endblock %}
+</div>
