@@ -1,2 +1,3 @@
 Timer: [https://www.frontendhero.dev/tutorial/pomodoro-timer-from-scratch/#17-adding-music-when-each-timer-completes]
 Loader: [https://youtu.be/b9zyKCsUJfY?si=wnXVgpr9WOoXOMGJ]
+Navbar: [https://tailwindui.com/components/application-ui/navigation/navbars]
