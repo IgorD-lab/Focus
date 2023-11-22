@@ -63,3 +63,10 @@ def register():
             return redirect(url_for('views.index')) # views file home url or just use redirect('/')
 
     return render_template('register.html', user=current_user)
+
+@auth.route('/profile', methods=['GET', 'POST'])
+def profile():
+    if request.method == "POST":
+        pass
+
+    return render_template('profile.html', user=current_user) # set session for logged in user

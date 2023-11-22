@@ -22,3 +22,12 @@ when to run: ./tailwindcss -i ./website/static/css/src/input.css -o ./website/st
 1. Initial Development: When you're starting to develop your project, you should run this command. This will start the Tailwind CLI in watch mode, which means it will automatically rebuild your CSS whenever you make changes to your input CSS file or your Tailwind configuration testdriven.io.
 2. Updating Tailwind Configuration: If you make changes to your tailwind.config.js file, you should restart the Tailwind CLI to make sure your changes take effect. This is because the CLI reads the configuration file when it starts, so any changes you make won't be recognized until you restart the CLI dev.to.
 3. Adding or Removing Tailwind Directives: If you add or remove Tailwind directives in your input CSS file, you should restart the Tailwind CLI to make sure your changes are included in the output CSS file section.io.
+
+if tailwinds gives cancer and refuses to work do this:
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "tailwind/css/base";
+@import "tailwind/css/components";
+@import "tailwind/css/utilities";

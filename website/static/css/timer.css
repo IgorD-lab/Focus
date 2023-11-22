@@ -1,3 +1,7 @@
+@import "tailwind/css/base";
+@import "tailwind/css/components";
+@import "tailwind/css/utilities";
+
 /**
 * Quick and dirty reset & wrapper set-up
 */

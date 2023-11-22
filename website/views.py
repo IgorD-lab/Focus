@@ -88,6 +88,18 @@ def delete_note():
     
     return jsonify({}) # turn empty python dict into json object and return, we have to return something
 
+@views.route('/delete-note-all', methods=['POST'])
+def delete_note_all():
+    user_data = json.loads(request.data)
+    user_id = user_data['userId']
+    user = User.query.get(user_id)
+    if user:
+        notes = Note.query.filter_by(user_id=user.id).all()
+        for note in notes:
+            db.session.delete(note)
+        db.session.commit()
+    return jsonify({})
+
 @views.route('/quiz', methods=['GET', 'POST'])
 @login_required
 def quiz():
@@ -155,3 +167,11 @@ def delete_quiz_all():
             db.session.delete(quiz)
         db.session.commit()
     return jsonify({})
+
+@views.route('/construction', methods=['GET', 'POST'])
+@login_required
+def construction():
+    if request.method == 'POST':
+       pass
+
+    return render_template('construction.html', user=current_user)

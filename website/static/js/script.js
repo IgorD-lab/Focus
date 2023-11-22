@@ -9,6 +9,17 @@ function deleteNote(noteId) {
   });
 }
 
+function deleteNoteAll(userId) {
+  // take note id that was passed in index.html
+  fetch("/delete-note-all", {
+    // send post request to delete note endpoint
+    method: "POST",
+    body: JSON.stringify({ userId: userId }), // make sure it's userId, not id
+  }).then((_res) => {
+    window.location.href = "/notes"; // redirect to home page (refresh page)
+  });
+}
+
 function deleteTodo(todoId) {
   // take note id that was passed in index.html
   fetch("/delete-todo", {
@@ -41,13 +52,11 @@ function deleteQuiz(quizId) {
 }
 
 function deleteQuizAll(userId) {
-  // take note id that was passed in index.html
   fetch("/delete-quiz-all", {
-    // send post request to delete note endpoint
     method: "POST",
-    body: JSON.stringify({ userId: userId }), // make sure it's userId, not id
+    body: JSON.stringify({ userId: userId }),
   }).then((_res) => {
-    window.location.href = "/quiz"; // redirect to home page (refresh page)
+    window.location.href = "/quiz";
   });
 }
 
