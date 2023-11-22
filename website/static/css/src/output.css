@@ -716,10 +716,6 @@ video {
   width: 100%;
 }
 
-.max-w-7xl {
-  max-width: 80rem;
-}
-
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -1090,6 +1086,11 @@ video {
 .hover\:bg-gray-700:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(55 65 81 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-red-800:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 28 28 / var(--tw-bg-opacity));
 }
 
 .hover\:text-white:hover {

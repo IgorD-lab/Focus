@@ -2,20 +2,7 @@
 content %}
 <div class="container mx-auto">
   <h1 class="text-center text-3xl">Notes</h1>
-  <ul class="list-none" id="notes">
-    {% for note in user.notes %}
-    <li class="border-b border-gray-200 py-4 flex justify-between items-center">
-      {{ note.data }}
-      <button
-        type="button"
-        class="text-red-500"
-        onClick="deleteNote('{{ note.id }}')"
-      >
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </li>
-    {% endfor %}
-  </ul>
+
   <form method="POST" class="my-4">
     <textarea
       name="note"
@@ -37,5 +24,19 @@ content %}
       </button>
     </div>
   </form>
+  <ul class="list-none" id="notes">
+    {% for note in user.notes %}
+    <li class="border-b border-gray-200 py-4 flex justify-between items-center">
+      {{ note.data }}
+      <button
+        type="button"
+        class="text-red-500"
+        onClick="deleteNote('{{ note.id }}')"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </li>
+    {% endfor %}
+  </ul>
 </div>
 {% endblock %}

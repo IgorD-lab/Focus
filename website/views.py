@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, flash, jsonify, redirect, session 
 from flask_login import login_required, current_user
 from sqlalchemy.sql import func
-from .models import Note, Todo, Quiz
+from .models import Note, Todo, Quiz, User
 from . import db
 import json
 
@@ -133,11 +133,6 @@ def quiz_questions():
 
     return render_template('quiz-questions.html', user=current_user, question=question)
 
-
-
-
-
-
 @views.route('/delete-quiz', methods=['POST'])
 def delete_quiz():
     quiz = json.loads(request.data) 
@@ -147,4 +142,16 @@ def delete_quiz():
         if quiz.user_id == current_user.id: 
             db.session.delete(quiz) 
             db.session.commit()
+    return jsonify({})
+
+@views.route('/delete-quiz-all', methods=['POST'])
+def delete_quiz_all():
+    user_data = json.loads(request.data)
+    user_id = user_data['userId']
+    user = User.query.get(user_id)
+    if user:
+        quizzes = Quiz.query.filter_by(user_id=user.id).all()
+        for quiz in quizzes:
+            db.session.delete(quiz)
+        db.session.commit()
     return jsonify({})

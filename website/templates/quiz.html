@@ -42,7 +42,15 @@
     >
       Go to Quiz Questions
     </button>
+    <button
+      href="#"
+      onclick="deleteQuizAll('{{ user.id }}')"
+      class="bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+    >
+      Delete All
+    </button>
   </form>
+
   <div class="w-full">
     <div class="flex items-center justify-between px-3 py-2">
       <p class="font-semibold">Title</p>
