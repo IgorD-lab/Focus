@@ -32,3 +32,13 @@ class User(db.Model, UserMixin): # UserMixin must be inherited in User object to
     todo= db.relationship('Todo')
     quiz = db.relationship('Quiz')
 
+class Deck(db.Model):
+   id = db.Column(db.Integer, primary_key=True)
+   name = db.Column(db.String(80), unique=True, nullable=False)
+   flashcards = db.relationship('Flashcard', backref='deck', lazy=True)
+
+class Flashcard(db.Model):
+   id = db.Column(db.Integer, primary_key=True)
+   question = db.Column(db.String(120), nullable=False)
+   answer = db.Column(db.String(120), nullable=False)
+   deck_id = db.Column(db.Integer, db.ForeignKey('deck.id'), nullable=False)

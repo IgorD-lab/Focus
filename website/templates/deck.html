@@ -1,0 +1,7 @@
+{% extends "layout.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<h1 class="text-3xl font-bold">{{ deck.name }}</h1>
+{% for flashcard in deck.flashcards %}
+<p class="text-xl">{{ flashcard.question }}</p>
+<p class="text-xl">{{ flashcard.answer }}</p>
+{% endfor %} {% endblock %}

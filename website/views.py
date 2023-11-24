@@ -1,7 +1,7 @@
-from flask import Blueprint, render_template, request, flash, jsonify, redirect, session 
+from flask import Blueprint, render_template, request, flash, jsonify, redirect, session, url_for
 from flask_login import login_required, current_user
 from sqlalchemy.sql import func
-from .models import Note, Todo, Quiz, User
+from .models import Note, Todo, Quiz, User, Deck, Flashcard
 from . import db
 import json
 
@@ -175,3 +175,35 @@ def construction():
        pass
 
     return render_template('construction.html', user=current_user)
+
+@views.route('/create_deck', methods=['GET', 'POST'])
+def create_deck():
+   if request.method == 'POST':
+       name = request.form['name']
+       deck = Deck(name=name)
+       db.session.add(deck)
+       db.session.commit()
+       return redirect('/decks')
+   return render_template('create_deck.html', user=current_user)
+
+@views.route('/create_flashcard', methods=['GET', 'POST'])
+def create_flashcard():
+   if request.method == 'POST':
+       question = request.form['question']
+       answer = request.form['answer']
+       deck_id = request.form['deck_id']
+       flashcard = Flashcard(question=question, answer=answer, deck_id=deck_id)
+       db.session.add(flashcard)
+       db.session.commit()
+       return redirect('/decks')
+   return render_template('create_flashcard.html', user=current_user)
+
+@views.route('/decks', methods=['GET'])
+def decks():
+   decks = Deck.query.all()
+   return render_template('decks.html', decks=decks, user=current_user)
+
+@views.route('/deck/<int:deck_id>', methods=['GET'])
+def deck(deck_id):
+   deck = Deck.query.get(deck_id)
+   return render_template('deck.html', deck=deck, user=current_user)

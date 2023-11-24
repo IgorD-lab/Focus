@@ -1,0 +1,17 @@
+{% extends "layout.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<form method="POST" class="flex flex-col space-y-4">
+  <label for="name" class="font-bold">Deck Name:</label><br />
+  <input
+    type="text"
+    id="name"
+    name="name"
+    class="border-2 border-gray-300 p-2 rounded-md"
+  />
+  <input
+    type="submit"
+    value="Create Deck"
+    class="bg-blue-500 text-white p-2 rounded-md"
+  />
+</form>
+{% endblock %}
