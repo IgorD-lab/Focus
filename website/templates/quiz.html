@@ -1,7 +1,7 @@
 {% extends "layout.html" %} {% block title %}Quiz{% endblock %} {% block content
 %}
-<div class="container mx-auto">
-  <h1 class="text-center text-3xl">Quiz</h1>
+<div class="container mx-auto bg-backgroundD text-textD">
+  <h1 class="text-center text-3xl text-textD">Quiz</h1>
 
   <form id="form-Quiz" method="POST">
     <div class="mb-4 mt-4">
@@ -31,14 +31,14 @@
     </div>
     <button
       type="submit"
-      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+      class="bg-primaryD hover:bg-hoverButtonD text-textD font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
     >
       Save
     </button>
     <button
       type="button"
       id="goToQuizQuestions"
-      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+      class="bg-primaryD hover:bg-hoverButtonD text-textD font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
     >
       Go to Quiz Questions
     </button>
@@ -53,15 +53,15 @@
 
   <div class="w-full">
     <div class="flex items-center justify-between px-3 py-2">
-      <p class="font-semibold">Title</p>
-      <p class="font-semibold">Description</p>
-      <p class="font-semibold text-right">Delete</p>
+      <p class="font-semibold text-primaryD">Title</p>
+      <p class="font-semibold text-primaryD">Description</p>
+      <p class="font-semibold text-right text-primaryD">Delete</p>
     </div>
     <hr />
     <div style="height: 20rem" class="p-4 overflow-y-scroll">
       <ul class="list-disc">
         {% for quiz in user.quiz %}
-        <div class="shadow rounded-lg mb-3 bg-gray-150">
+        <div class="shadow rounded-lg mb-3 bg-accentD">
           <div class="p-4">
             <div class="flex items-center justify-between">
               <div class="flex-1">

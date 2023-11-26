@@ -1,9 +1,21 @@
 {% extends "layout.html" %} {% block title %}Home{% endblock %} {% block content
-%} {% for deck in decks %}
-<h2 class="text-2xl font-bold">{{ deck.name }}</h2>
-<a
-  href="{{ url_for('views.deck', deck_id=deck.id) }}"
-  class="text-blue-500 underline"
-  >View Deck</a
->
-{% endfor %} {% endblock %}
+%}
+<div class="container mx-auto justify-center items-center flex">
+  <div class="flex flex-col imtes-center">
+    <h1 class="text-2xl font-bold text-textD">Decks</h1>
+    <div style="height: 49rem" class="p-4 overflow-y-scrol">
+      {% for deck in decks %}
+      <div class="m-5">
+        <h2 class="text-2xl font-bold text-textD py-2 px-4">{{ deck.name }}</h2>
+        <button
+          class="bg-primaryD hover:bg-hoverButtonD text-backgroundD font-bold py-2 px-4 rounded"
+          onclick="window.location.href='{{ url_for('views.deck', deck_id=deck.id) }}';"
+        >
+          View Deck
+        </button>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

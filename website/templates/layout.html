@@ -22,7 +22,7 @@
     <title>{% block title %}Layout error{% endblock %}</title>
     <!-- allow Home to be overwritten using jinja -->
   </head>
-  <body>
+  <body class="bg-backgroundD">
     <div id="loader"></div>
     <!-- ------------------------------------------ NAV ------------------------------------------------------- -->
     <nav class="bg-gray-800">
@@ -128,6 +128,11 @@
                   href="/create_flashcard"
                   class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                   >Create Flashcard</a
+                >
+                <a
+                  href="/decks"
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                  >Decks</a
                 >
                 {% else %}
                 <a

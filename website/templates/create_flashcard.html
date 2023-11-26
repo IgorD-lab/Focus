@@ -1,21 +1,21 @@
 {% extends "layout.html" %} {% block title %}Home{% endblock %} {% block content
 %}
 <form method="POST" class="flex flex-col space-y-4">
-  <label for="question" class="font-bold">Question:</label><br />
+  <label for="question" class="font-bold text-textD">Question:</label><br />
   <input
     type="text"
     id="question"
     name="question"
     class="border-2 border-gray-300 p-2 rounded-md"
   />
-  <label for="answer" class="font-bold">Answer:</label><br />
+  <label for="answer" class="font-bold text-textD">Answer:</label><br />
   <input
     type="text"
     id="answer"
     name="answer"
     class="border-2 border-gray-300 p-2 rounded-md"
   />
-  <label for="deck_id" class="font-bold">Deck ID:</label><br />
+  <label for="deck_id" class="font-bold text-textD">Deck ID:</label><br />
   <input
     type="text"
     id="deck_id"
@@ -25,7 +25,7 @@
   <input
     type="submit"
     value="Create Flashcard"
-    class="bg-blue-500 text-white p-2 rounded-md"
+    class="bg-primaryD hover:bg-hoverButtonD text-backgroundD p-2 rounded-md font-bold"
   />
 </form>
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends "layout.html" %} {% block title %}Quiz{% endblock %} {% block content
 %}
-<div class="container mx-auto">
-  <h1 class="text-center text-3xl">Quiz</h1>
+<div class="container mx-auto bg-backgroundD text-textD">
+  <h1 class="text-center text-3xl text-primaryD">Quiz</h1>
   <ul class="list-none" id="quiz-questions">
     <li class="border-b border-gray-200 py-4 flex justify-between items-center">
       {{ question.question }}
@@ -16,7 +16,7 @@
     <div class="text-center my-4">
       <button
         type="submit"
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        class="bg-primaryD hover:bg-hoverButtonD text-textD font-bold py-2 px-4 rounded"
       >
         Submit Answer
       </button>

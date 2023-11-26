@@ -3,7 +3,7 @@
 @import "tailwind/css/utilities";
 
 body {
-  background-image: url("../images/webb.png");
+  /* background-image: url("../images/prism.png"); */
   background-position: relative;
   background-repeat: repeat;
   background-size: fill;

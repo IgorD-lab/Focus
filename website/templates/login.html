@@ -1,9 +1,9 @@
 {% extends "layout.html" %} {% block title %}Login{% endblock %} {% block
 content %}
 <form method="POST" class="flex flex-col items-center">
-  <h3 class="text-center text-3xl">Login</h3>
+  <h3 class="text-center text-3xl text-textD">Login</h3>
   <div class="my-4">
-    <label for="email" class="block mb-2">Email Address</label>
+    <label for="email" class="block mb-2 text-textD">Email Address</label>
     <input
       type="email"
       class="border-2 border-gray-200 rounded w-full py-2 px-4"
@@ -13,7 +13,7 @@ content %}
     />
   </div>
   <div class="my-4">
-    <label for="password" class="block mb-2">Password</label>
+    <label for="password" class="block mb-2 text-textD">Password</label>
     <input
       type="password"
       class="border-2 border-gray-200 rounded w-full py-2 px-4"
@@ -25,7 +25,7 @@ content %}
   <br />
   <button
     type="submit"
-    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    class="bg-primaryD hover:bg-hoverButtonD text-textD font-bold py-2 px-4 rounded"
   >
     Submit
   </button>
