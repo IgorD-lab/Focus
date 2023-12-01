@@ -4,6 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link
       href="https://cdn.tailwindcss.com/2.2.19/tailwind.min.css"
       rel="stylesheet"
@@ -22,7 +23,7 @@
     <title>{% block title %}Layout error{% endblock %}</title>
     <!-- allow Home to be overwritten using jinja -->
   </head>
-  <body class="bg-backgroundD">
+  <body class="bg-white dark:bg-backgroundD">
     <div id="loader"></div>
     <!-- ------------------------------------------ NAV ------------------------------------------------------- -->
     <nav class="bg-gray-800">
@@ -177,6 +178,9 @@
             </button> -->
 
             <!-- Profile dropdown -->
+            <div class="container mx-auto">
+              <div class="flex items-start mb-4"></div>
+            </div>
             <div class="relative ml-3">
               <div>
                 <button
@@ -339,8 +343,8 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    <script src="./static/js/script.js"></script>
-    <script src="./static/js/flash.js"></script>
-    <script src="./static/js/loader.js"></script>
+    <script src="../static/js/script.js"></script>
+    <script src="../static/js/flash.js"></script>
+    <script src="../static/js/loader.js"></script>
   </body>
 </html>
