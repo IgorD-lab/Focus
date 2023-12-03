@@ -31,14 +31,16 @@ class User(db.Model, UserMixin): # UserMixin must be inherited in User object to
     # Note for relationship in sql if it was foreign key we would use note lowercase (dumb design)
     todo= db.relationship('Todo')
     quiz = db.relationship('Quiz')
-
 class Deck(db.Model):
    id = db.Column(db.Integer, primary_key=True)
    name = db.Column(db.String(80), unique=True, nullable=False)
    flashcards = db.relationship('Flashcard', backref='deck', lazy=True)
-
 class Flashcard(db.Model):
    id = db.Column(db.Integer, primary_key=True)
    question = db.Column(db.String(120), nullable=False)
    answer = db.Column(db.String(120), nullable=False)
    deck_id = db.Column(db.Integer, db.ForeignKey('deck.id'), nullable=False)
+class TempFlashcard(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    flashcard_id = db.Column(db.Integer, db.ForeignKey('flashcard.id'))

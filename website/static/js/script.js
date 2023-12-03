@@ -60,6 +60,20 @@ function deleteQuizAll(userId) {
   });
 }
 
+function deleteDeck(deckId) {
+  fetch(`/delete-deck/${deckId}`, {
+    method: "DELETE",
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        location.reload();
+      } else {
+        alert("Error deleting deck");
+      }
+    });
+}
+
 function toggle() {
   var x = document.getElementById("dropdown-toggle");
 
