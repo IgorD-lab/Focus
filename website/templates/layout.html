@@ -23,7 +23,10 @@
     <title>{% block title %}Layout error{% endblock %}</title>
     <!-- allow Home to be overwritten using jinja -->
   </head>
-  <body class="bg-white dark:bg-backgroundD">
+  <body
+    class="bg-center bg-no-repeat bg-cover bg-fixed h-full w-full"
+    style="background-image: url(../static/images/timer/timer6.jpg)"
+  >
     <div id="loader"></div>
     <!-- ------------------------------------------ NAV ------------------------------------------------------- -->
     <nav class="bg-gray-800">
@@ -110,11 +113,6 @@
                   class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                   >Todo</a
                 >
-                <a
-                  href="/timer"
-                  class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-                  >Timer</a
-                >
                 <!-- <a
                   href="/quiz"
                   class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
@@ -124,6 +122,11 @@
                   href="/decks"
                   class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                   >Decks</a
+                >
+                <a
+                  href="/timer"
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                  >Timer</a
                 >
                 {% else %}
                 <a

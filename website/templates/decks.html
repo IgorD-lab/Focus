@@ -1,81 +1,99 @@
 {% extends "layout.html" %} {% block title %}Home{% endblock %} {% block content
 %}
-<div class="container mx-auto bg-backgroundD text-textD">
-  <h1 class="text-center text-3xl text-textD">Flashcard Decks</h1>
 
-  <!-- Left Side -->
-  <div class="flex flex-col md:flex-row w-full p-4">
-    <div class="w-full md:w-1/2">
-      <form method="POST" action="/decks" class="flex flex-col space-y-4 m-20">
-        <label for="name" class="font-bold text-textD">Deck Name:</label><br />
-        <input
-          type="text"
-          id="name"
-          name="name"
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        />
-        <input
-          type="submit"
-          value="Create Deck"
-          class="bg-primaryD hover:bg-hoverButtonD text-textD font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        />
-      </form>
+<div class="container mx-auto text-textD">
+  <div class="mx-auto w-full p-4">
+    <div class="flex flex-col md:flex-row w-full">
+      <div
+        class="w-full md:w-1/2 rounded-md shadow-md backdrop-blur-md bg-opacity-5 bg-white"
+      >
+        <form
+          method="POST"
+          action="/decks"
+          class="flex flex-col space-y-1 m-10"
+        >
+          <label for="name" class="font-bold text-textD">Deck Name:</label>
+          <br />
+          <input
+            type="text"
+            id="name"
+            name="name"
+            class="w-full py-1 px-2 mt-1 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+          <input
+            type="submit"
+            value="Create Deck"
+            class="bg-primaryD hover:bg-hoverButtonD text-textD font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline"
+          />
+        </form>
+      </div>
 
-      <form method="POST" class="flex flex-col space-y-4 m-20">
-        <label for="question" class="font-bold text-textD">Question:</label
-        ><br />
-        <input
-          type="text"
-          id="question"
-          name="question"
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        />
-        <label for="answer" class="font-bold text-textD">Answer:</label><br />
-        <input
-          type="text"
-          id="answer"
-          name="answer"
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        />
-        <label for="deck_id" class="font-bold text-textD">Deck ID:</label><br />
-        <input
-          type="text"
-          id="deck_id"
-          name="deck_id"
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        />
-        <input
-          type="submit"
-          value="Create Flashcard"
-          class="bg-primaryD hover:bg-hoverButtonD text-textD font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        />
-      </form>
+      <div
+        class="w-full md:w-1/2 rounded-md shadow-md backdrop-blur-md bg-opacity-5 bg-white"
+      >
+        <form method="POST" class="flex flex-col space-y-1 m-10">
+          <label for="question" class="font-bold text-textD">Question:</label>
+          <br />
+          <input
+            type="text"
+            id="question"
+            name="question"
+            class="w-full py-1 px-2 mt-1 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+          <label for="answer" class="font-bold text-textD">Answer:</label>
+          <br />
+          <input
+            type="text"
+            id="answer"
+            name="answer"
+            class="w-full py-1 px-2 mt-1 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+          <label for="deck_id" class="font-bold text-textD">Deck ID:</label>
+          <br />
+          <input
+            type="text"
+            id="deck_id"
+            name="deck_id"
+            class="w-full py-1 px-2 mt-1 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          />
+          <input
+            type="submit"
+            value="Create Flashcard"
+            class="bg-primaryD hover:bg-hoverButtonD text-textD font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline"
+          />
+        </form>
+      </div>
     </div>
+  </div>
 
-    <!-- Right Side -->
+  <div class="mx-auto w-full p-2">
     <div
-      class="w-full md:w-1/2 p-4 overflow-y-scroll no-scrollbar"
-      style="height: 49rem"
+      class="overflow-y-scroll no-scrollbar rounded-lg shadow-sm backdrop-blur-sm bg-opacity-10 bg-white"
+      style="height: 30rem"
     >
       {% for deck in decks %}
-      <div class="m-5 shadow rounded-lg mb-3 bg-accentD">
-        <div class="p-4">
-          <h2 class="text-2xl font-bold text-textD">
+      <div
+        class="m-2 mb-1 rounded-lg shadow-sm backdrop-blur-sm bg-opacity-10 bg-white"
+      >
+        <div class="p-1 flex">
+          <label class="text-sm font-medium text-textD">
             Deck Name: {{ deck.name }} <br />
             Deck ID: {{ deck.id }}
-          </h2>
-          <button
-            class="bg-primaryD hover:bg-hoverButtonD text-textD font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            onclick="window.location.href='{{ url_for('views.deck', deck_id=deck.id) }}';"
-          >
-            View Deck
-          </button>
-          <button
-            class="bg-primaryD hover:bg-hoverButtonD text-textD font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            onclick="deleteDeck({{ deck.id }})"
-          >
-            Delete Deck
-          </button>
+          </label>
+          <div class="ml-auto">
+            <button
+              class="bg-primaryD hover:bg-hoverButtonD text-textD font-bold py-0.5 px-2 rounded focus:outline-none focus:shadow-outline"
+              onclick="window.location.href='{{ url_for('views.deck', deck_id=deck.id) }}';"
+            >
+              View Deck
+            </button>
+            <button
+              class="bg-gray-800 hover:bg-gray-900 text-textD font-bold py-0.5 px-2 rounded focus:outline-none focus:shadow-outline"
+              onclick="deleteDeck({{ deck.id }})"
+            >
+              Delete Deck
+            </button>
+          </div>
         </div>
       </div>
       {% endfor %}
