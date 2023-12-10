@@ -205,6 +205,7 @@ body {
   font-size: 8rem;
   letter-spacing: -0.25rem;
   font-variant-numeric: tabular-nums;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* add shadow to time */
 }
 #pomodoro-clock-actions .btn {
   min-height: 42px;
