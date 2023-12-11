@@ -31,12 +31,12 @@ content %}
     <ul class="list-none" id="notes">
       {% for note in user.notes %}
       <li
-        class="border-b border-gray-200 py-4 flex justify-between items-center break-all"
+        class="border-b border-gray-200 py-4 flex justify-between items-center"
       >
-        {{ note.data }}
+        <div class="break-words flex-grow">{{ note.data }}</div>
         <button
           type="button"
-          class="button"
+          class="button flex-shrink-0"
           onClick="deleteNote('{{ note.id }}')"
         >
           <svg viewBox="0 0 448 512" class="svgIcon">
