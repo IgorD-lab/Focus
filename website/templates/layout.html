@@ -24,16 +24,17 @@
     <link rel="stylesheet" href="./static/css/body.css" />
     <link rel="stylesheet" href="./static/css/loader.css" />
     <link rel="stylesheet" href="./static/css/dropdown.css" />
+
     <title>{% block title %}Layout error{% endblock %}</title>
     <!-- allow Home to be overwritten using jinja -->
   </head>
   <body
     class="bg-center bg-no-repeat bg-cover bg-fixed h-full w-full"
-    style="background-image: url(../static/images/wallpaper/wallpaper10.jpg)"
+    style="background-image: url(../static/images/wallpaper/wallpaper16.jpg)"
   >
     <div id="loader"></div>
     <!-- ------------------------------------------ NAV ------------------------------------------------------- -->
-    <nav class="bg-gray-800">
+    <nav class="bg-gray-700">
       <div class="mx-auto px-2 sm:px-6 lg:px-8">
         <div class="relative flex h-16 items-center justify-between">
           <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -93,7 +94,7 @@
             <div class="flex flex-shrink-0 items-center">
               <img
                 class="h-8 w-auto"
-                src="../static/images/focusLogo.png"
+                src="../static/images/focusLogo1.png"
                 alt="Your Company"
               />
             </div>
@@ -108,142 +109,45 @@
                   >Dashboard</a
                 >
                 <a
+                  href="/timer"
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                  >Timer</a
+                >
+                <a
                   href="/notes"
                   class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                   >Notes</a
                 >
                 <a
                   href="/todo"
-                  class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium ml-auto"
                   >Todo</a
                 >
-                <!-- <a
-                  href="/quiz"
-                  class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-                  >Quiz</a
-                > -->
                 <a
                   href="/decks"
                   class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                   >Decks</a
                 >
-                <a
-                  href="/timer"
-                  class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-                  >Timer</a
-                >
-                {% else %}
-                <a
-                  href="/login"
-                  class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-                  >Login</a
-                >
-                <a
-                  href="/register"
-                  class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-                  >Register</a
-                >
-                {% endif %}
               </div>
             </div>
-          </div>
-          <div
-            class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
-          >
-            <!-- Notification button -->
-
-            <!-- <button
-              type="button"
-              class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+            <a
+              href="/logout"
+              class="px-4 py-2 text-sm text-gray-300 ml-auto hidden sm:block"
+              >Sign out</a
             >
-              <span class="absolute -inset-1.5"></span>
-              <span class="sr-only">View notifications</span>
-              <svg
-                class="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
-                />
-              </svg>
-            </button> -->
-
-            <!-- Profile dropdown -->
-            <div class="container mx-auto">
-              <div class="flex items-start mb-4"></div>
-            </div>
-            <div class="relative ml-3">
-              <div>
-                <button
-                  type="button"
-                  class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                  id=""
-                  onclick="toggle()"
-                  aria-expanded="false"
-                  aria-haspopup="true"
-                >
-                  <span class="absolute -inset-1.5"></span>
-                  <span class="sr-only">Open user menu</span>
-                  <img
-                    class="h-8 w-8 rounded-full"
-                    src="../static/images/icons/profilePic.jpg"
-                    alt=""
-                  />
-                </button>
-              </div>
-
-              <!--
-                Dropdown menu, show/hide based on menu state.
-    
-                Entering: "transition ease-out duration-100"
-                  From: "transform opacity-0 scale-95"
-                  To: "transform opacity-100 scale-100"
-                Leaving: "transition ease-in duration-75"
-                  From: "transform opacity-100 scale-100"
-                  To: "transform opacity-0 scale-95"
-              -->
-              <div
-                class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden"
-                role="menu"
-                aria-orientation="vertical"
-                aria-labelledby="user-menu-button"
-                tabindex="-1"
-                id="dropdown-toggle"
-              >
-                <!-- Active: "bg-gray-100", Not Active: "" -->
-                <a
-                  href="/profile"
-                  class="block px-4 py-2 text-sm text-gray-700"
-                  role="menuitem"
-                  tabindex="-1"
-                  id="user-menu-item-0"
-                  >Your Profile</a
-                >
-                <a
-                  href="#"
-                  class="block px-4 py-2 text-sm text-gray-700"
-                  role="menuitem"
-                  tabindex="-1"
-                  id="user-menu-item-1"
-                  >Settings</a
-                >
-                <a
-                  href="/logout"
-                  class="block px-4 py-2 text-sm text-gray-700"
-                  role="menuitem"
-                  tabindex="-1"
-                  id="user-menu-item-2"
-                  >Sign out</a
-                >
-              </div>
-            </div>
           </div>
+          {% else %}
+          <a
+            href="/login"
+            class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+            >Login</a
+          >
+          <a
+            href="/register"
+            class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+            >Register</a
+          >
+          {% endif %}
         </div>
       </div>
 
@@ -251,12 +155,16 @@
       <div class="sm:hidden hidden" id="mobile-menu">
         <div class="space-y-1 px-2 pb-3 pt-2">
           {% if user.is_authenticated %}
-          <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
           <a
             href="/"
             class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
             aria-current="page"
             >Dashboard</a
+          >
+          <a
+            href="/timer"
+            class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
+            >Timer</a
           >
           <a
             href="/notes"
@@ -268,15 +176,15 @@
             class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
             >Todo</a
           >
+
           <a
-            href="/timer"
-            class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
-            >Timer</a
+            href="/decks"
+            class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+            >Decks</a
           >
-          <a
-            href="/quiz"
-            class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
-            >Quiz</a
+
+          <a href="/logout" class="block px-4 py-2 text-sm text-gray-300"
+            >Sign out</a
           >
           {% else %}
           <a
@@ -293,6 +201,29 @@
         </div>
       </div>
     </nav>
+
+    <!-- ----------------------------SPOTIFY------------------------------------ -->
+    <div id="spotify-player">
+      <iframe
+        style="
+          border-radius: 12px;
+          bottom: -60px;
+          left: 0;
+          position: fixed;
+          z-index: 1;
+        "
+        src="https://open.spotify.com/embed/playlist/2L8Gm7T2aJvRj1ih03UeKv?utm_source=generator&theme=0"
+        width="20%"
+        height="150"
+        frameborder="0"
+        allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        class="ml-2"
+        loading="lazy"
+      ></iframe>
+    </div>
+
+    <!-- ---------------------------------------------------------------- -->
 
     <!--Flash Messages combined with python: flash('Password must be at least 7 characters', category='error') instead of alert works on every page-->
     {% with messages = get_flashed_messages(with_categories=true) %} {% if
@@ -319,11 +250,9 @@
     </div>
 
     {% endif %} {% endfor %} {% endif %} {% endwith %}
-    <!-- <div class=""> -->
+    <!-- <div class="content"> -->
     {% block content %}{% endblock %}
     <!-- </div> -->
-
-    <!-- ---------------------------------------------------------------- -->
 
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -342,6 +271,5 @@
     ></script>
     <script src="../static/js/script.js"></script>
     <script src="../static/js/flash.js"></script>
-    <script src="../static/js/loader.js"></script>
   </body>
 </html>

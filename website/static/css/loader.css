@@ -1,12 +1,3 @@
 @import "tailwind/css/base";
 @import "tailwind/css/components";
 @import "tailwind/css/utilities";
-
-#loader {
-  position: fixed;
-  width: 100%;
-  height: 100vh;
-  z-index: 1;
-  overflow: visible;
-  background: #fff url(../images/infinity.gif) no-repeat center center;
-}
