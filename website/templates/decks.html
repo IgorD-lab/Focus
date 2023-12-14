@@ -5,7 +5,7 @@
   <div class="mx-auto w-full p-4">
     <div class="flex flex-col md:flex-row w-full h-80 overflow-auto">
       <div
-        class="w-full md:w-1/2 rounded-md shadow-md backdrop-blur-md bg-opacity-5 bg-white"
+        class="w-full md:w-1/2 rounded-md shadow-md backdrop-blur-md bg-opacity-5 bg-white mr-2"
       >
         <form method="POST" action="/decks" class="flex flex-col space-y-1 m-5">
           <label for="name" class="font-bold text-textD">Deck Name:</label>
@@ -64,8 +64,7 @@
 
   <div class="mx-auto w-full p-2">
     <div
-      class="overflow-y-scroll no-scrollbar rounded-lg shadow-sm backdrop-blur-sm bg-opacity-10 bg-white"
-      style="height: 25rem"
+      class="overflow-y-scroll no-scrollbar rounded-lg shadow-sm backdrop-blur-sm bg-opacity-10 bg-white h-96"
     >
       {% for deck in decks %}
       <div

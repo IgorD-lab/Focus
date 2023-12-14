@@ -1,47 +1,45 @@
 {% extends "layout.html" %} {% block title %}Todo{% endblock %} {% block content
 %}
-<div class="container mx-auto">
-  <div class="flex flex-wrap my-12">
+<div class="container mx-auto p-4">
+  <div class="flex flex-wrap flex-shrink">
     <div class="w-full md:w-1/2">
-      <div class="shadow rounded-lg">
-        <div class="p-4">
-          <form id="form-Task" method="POST">
-            <div class="mb-4">
-              <input
-                type="text"
-                id="title"
-                name="title"
-                class="shadow-md backdrop-blur-md bg-opacity-10 bg-white w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-primaryD focus:border-primaryD dark:text-textD dark:placeholder-gray-500 dark:border-gray-300 dark:focus:ring-gray-400 dark:focus:border-gray-500"
-                maxlength="50"
-                autocomplete="off"
-                placeholder="Title"
-                required
-              />
-            </div>
-            <div class="mb-4">
-              <textarea
-                id="description"
-                name="description"
-                cols="30"
-                rows="10"
-                class="shadow-md backdrop-blur-md bg-opacity-10 bg-white w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-primaryD focus:border-primaryD dark:text-textD dark:placeholder-gray-500 dark:border-gray-300 dark:focus:ring-gray-400 dark:focus:border-gray-500"
-                maxlength="500"
-                autocomplete="off"
-                placeholder="Description"
-                required
-              ></textarea>
-            </div>
-            <button
-              type="submit"
-              class="w-full px-3 py-4 text-textD bg-hoverButtonD rounded-md focus:bg-hoverButtonD focus:outline-none"
-            >
-              Save
-            </button>
-          </form>
-        </div>
+      <div class="p-4">
+        <form id="form-Task" method="POST">
+          <div class="mb-4">
+            <input
+              type="text"
+              id="title"
+              name="title"
+              class="shadow-md backdrop-blur-md bg-opacity-10 bg-white w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-primaryD focus:border-primaryD dark:text-textD dark:placeholder-gray-500 dark:border-gray-300 dark:focus:ring-gray-400 dark:focus:border-gray-500"
+              maxlength="50"
+              autocomplete="off"
+              placeholder="Title"
+              required
+            />
+          </div>
+          <div class="mb-4">
+            <textarea
+              id="description"
+              name="description"
+              cols="30"
+              rows="10"
+              class="shadow-md backdrop-blur-md bg-opacity-10 bg-white w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-primaryD focus:border-primaryD dark:text-textD dark:placeholder-gray-500 dark:border-gray-300 dark:focus:ring-gray-400 dark:focus:border-gray-500"
+              maxlength="500"
+              autocomplete="off"
+              placeholder="Description"
+              required
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="w-full px-3 py-4 text-textD bg-hoverButtonD rounded-md focus:bg-hoverButtonD focus:outline-none"
+          >
+            Save
+          </button>
+        </form>
       </div>
     </div>
-    <div class="w-full md:w-1/2">
+    <div class="w-full md:w-1/2 overflow-hidden">
       <div
         class="flex items-center justify-between px-3 py-2 text-textD shadow-md backdrop-blur-md bg-opacity-10 bg-white"
       >
@@ -59,14 +57,16 @@
           class="rounded-lg mb-3 shadow-md backdrop-blur-md bg-opacity-10 bg-white"
         >
           <div class="p-4">
-            <div class="flex items-center justify-between bg-">
-              <div class="flex-1">
-                <p class="break-words text-textD">{{ todo.title }}</p>
+            <div class="flex items-center justify-between">
+              <div class="flex-1 p-2">
+                <p class="break-long-words text-textD">{{ todo.title }}</p>
               </div>
               <div class="flex-1">
-                <p class="break-words text-textD">{{ todo.description }}</p>
+                <p class="break-long-words text-textD">
+                  {{ todo.description }}
+                </p>
               </div>
-              <div class="flex-1-c text-right">
+              <div class="flex-1-c text-right ml-2">
                 {% if todo.completed %}
                 <button
                   onclick="completeTodo('{{ todo.id }}')"
