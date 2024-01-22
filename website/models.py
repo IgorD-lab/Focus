@@ -4,6 +4,16 @@ from . import db
 from flask_login import UserMixin # helps with user object, allows us to see information about currently logged in user
 from sqlalchemy.sql import func
 
+
+class User(db.Model, UserMixin): # UserMixin must be inherited in User object to use flask_login
+    id = db.Column(db.Integer, primary_key=True) # Unique integer that defines user member
+    email = db.Column(db.String(150), unique=True) # string size must be defined, 2 users cant have same email
+    password = db.Column(db.String(150))
+    username = db.Column(db.String(150))
+    notes = db.relationship('Note') # connect user with their notes, we can access all the notes user created with this column, 
+    # Note for relationship in sql if it was foreign key we would use note lowercase (dumb design)
+    todo= db.relationship('Todo')
+    quiz = db.relationship('Quiz')
 class Note(db.Model): # db.Model tells db that all notes must have below values
     id = db.Column(db.Integer, primary_key=True)
     data = db.Column(db.String(10000)) # max size of note
@@ -22,15 +32,6 @@ class Quiz(db.Model):
    question = db.Column(db.String(200), nullable=False)
    answer = db.Column(db.String(200), nullable=False)
    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-class User(db.Model, UserMixin): # UserMixin must be inherited in User object to use flask_login
-    id = db.Column(db.Integer, primary_key=True) # Unique integer that defines user member
-    email = db.Column(db.String(150), unique=True) # string size must be defined, 2 users cant have same email
-    password = db.Column(db.String(150))
-    username = db.Column(db.String(150))
-    notes = db.relationship('Note') # connect user with their notes, we can access all the notes user created with this column, 
-    # Note for relationship in sql if it was foreign key we would use note lowercase (dumb design)
-    todo= db.relationship('Todo')
-    quiz = db.relationship('Quiz')
 class Deck(db.Model):
    id = db.Column(db.Integer, primary_key=True)
    name = db.Column(db.String(80), unique=True, nullable=False)
