@@ -1,14 +1,12 @@
 ## Project Status: Abandoned - Planned Remake in Django + React
 
-This project is currently considered abandoned and will not be receiving further development updates. However, there are plans to remake it using a more robust and scalable framework: Django for the backend and React for the frontend.
+This project is currently considered abandoned and will not be receiving further development updates. However, there are plans to remake it using a more robust and scalable framework: Django for the backend and React for the frontend. You may use all of the code as you see fit. 
 
 **Reasons for Abandonment:**
 
 * **Improved Development Efficiency:** Django's streamlined approach and built-in functionalities significantly increase development speed, allowing focus on core features and logic rather than boilerplate code.
-* **Enhanced Code Maintainability:** Django's structure and organization promote writing clean and maintainable code, beneficial for future project scaling and complexity.
+* **Enhanced Code Maintainability:** Django's structure and organization promote writing clean and maintainable code, beneficial for future project scaling and complexity. Also Current code is all over the place with bootstrap tailwindcss and regular css making it very hard to change and/or read.
 * **Better User Experience Potential:** Django provides a solid foundation for building user-friendly interfaces with features like authentication, authorization, and forms handling, leading to a more positive user experience.
-
-
 
 **Planned Remake:**
 
