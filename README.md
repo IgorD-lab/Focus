@@ -30,6 +30,7 @@ This combination is expected to provide several benefits:
 **Stay Tuned:**
 
 I am actively working on the remake and will provide updates on its progress through this repository. If you're interested in contributing to the new version, feel free to watch this repository for future announcements.
+Also feel free to check out my other projects!
 
 **Alternatively:**
 
