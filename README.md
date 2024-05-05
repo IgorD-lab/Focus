@@ -38,4 +38,5 @@ If you're looking for a similar project that is actively maintained, you can con
 
 https://github.com/topics/pomodoro-timer
 
-I appreciate your understanding and look forward to bringing you the improved version of this project soon!
+I appreciate your understanding and look forward to bringing you the improved version of this project soon!  
+码农万岁
