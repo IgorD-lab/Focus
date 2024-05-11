@@ -37,7 +37,7 @@ Also feel free to check out my other projects!
 If you're looking for a similar project that is actively maintained, you can consider exploring the following options:
 https://github.com/topics/pomodoro-timer  
 
-If you still wish to run this project:
+**If you still wish to run this project:**
 - clone the repository:  
 git clone https://github.com/IgorD-lab/Focus.git
 - in console run:  
@@ -46,3 +46,5 @@ flask --app main run
 
 I appreciate your understanding and look forward to bringing you the improved version of this project soon!  
 码农万岁
+
+**Gallery:**
