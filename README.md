@@ -46,10 +46,10 @@ flask --app main run
 Now you can see the site at:  
 http://127.0.0.1:5000/  
 
-# I appreciate your understanding and look forward to bringing you the improved version of this project soon!  
-码农万岁
+*** I appreciate your understanding and look forward to bringing you the improved version of this project soon!***  
+*** 码农万岁 ***  
 
-***Gallery:***  
+# Gallery:  
 -  
 **> Timer**  
 ![240524_14h24m56s_screenshot](https://github.com/IgorD-lab/Focus/assets/74680803/c101422d-4fd5-4d9b-9faa-3e57f21ee6f1)  
