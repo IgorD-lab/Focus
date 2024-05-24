@@ -50,19 +50,19 @@ I appreciate your understanding and look forward to bringing you the improved ve
 码农万岁
 
 **Gallery:**
-</Timer>  
+*</Timer>*  
 ![240524_14h24m56s_screenshot](https://github.com/IgorD-lab/Focus/assets/74680803/c101422d-4fd5-4d9b-9faa-3e57f21ee6f1)  
 
-</Notes>  
+*</Notes>*  
 ![240524_14h20m51s_screenshot](https://github.com/IgorD-lab/Focus/assets/74680803/df979f01-3f58-4614-8c01-90a829e9b7e6)  
 
-</Todo>  
+*</Todo>*  
 ![240524_14h22m21s_screenshot](https://github.com/IgorD-lab/Focus/assets/74680803/977b07c7-fbd2-400a-b4e5-e82ecebcca69)  
 
-</Quiz Decks>  
+*</Quiz Decks>*  
 ![240524_14h23m48s_screenshot](https://github.com/IgorD-lab/Focus/assets/74680803/43bf96f1-6f57-48ce-9cf5-a24ac608112b)  
 
-</Different Wallpaper options> 
+*</Different Wallpaper options>*   
 (I never got around to implementing the user ability to change thease but there are many more wallpaper options inside static/images/wallpaper)
 ![240524_14h26m12s_screenshot](https://github.com/IgorD-lab/Focus/assets/74680803/24a56f02-3588-4c17-b07b-fe0d3e013ed4)  
 ![240524_14h27m00s_screenshot](https://github.com/IgorD-lab/Focus/assets/74680803/2d620a42-bd23-43ad-a998-2e4ec9377ff3)  
