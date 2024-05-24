@@ -67,14 +67,12 @@ I appreciate your understanding and look forward to bringing you the improved ve
 -  
 ***> Different Wallpaper options***   
 <p>(I never got around to implementing the user ability to change thease but there are many more wallpaper options inside static/images/wallpaper)</p>
--  
   
 ![240524_14h26m12s_screenshot](https://github.com/IgorD-lab/Focus/assets/74680803/24a56f02-3588-4c17-b07b-fe0d3e013ed4)  
 ![240524_14h27m00s_screenshot](https://github.com/IgorD-lab/Focus/assets/74680803/2d620a42-bd23-43ad-a998-2e4ec9377ff3)  
 ![240524_14h31m25s_screenshot](https://github.com/IgorD-lab/Focus/assets/74680803/7e236270-b91b-48d8-9d3d-5666f8b0551f)  
 ![240524_14h31m57s_screenshot](https://github.com/IgorD-lab/Focus/assets/74680803/f4abfacf-35f2-489b-946b-5f7d20d65dd3)  
 
--
 
 
 
