@@ -54,7 +54,7 @@ I appreciate your understanding and look forward to bringing you the improved ve
 ![240524_14h24m56s_screenshot](https://github.com/IgorD-lab/Focus/assets/74680803/c101422d-4fd5-4d9b-9faa-3e57f21ee6f1)  
 
 </Notes>  
-![240524_14h20m51s_screenshot](https://github.com/IgorD-lab/Focus/assets/74680803/df979f01-3f58-4614-8c01-90a829e9b7e6)
+![240524_14h20m51s_screenshot](https://github.com/IgorD-lab/Focus/assets/74680803/df979f01-3f58-4614-8c01-90a829e9b7e6)  
 
 </Todo>  
 ![240524_14h22m21s_screenshot](https://github.com/IgorD-lab/Focus/assets/74680803/977b07c7-fbd2-400a-b4e5-e82ecebcca69)  
