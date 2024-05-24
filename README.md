@@ -66,7 +66,7 @@ I appreciate your understanding and look forward to bringing you the improved ve
 
 -  
 ***> Different Wallpaper options***   
-****(I never got around to implementing the user ability to change thease but there are many more wallpaper options inside static/images/wallpaper)****
+<p>(I never got around to implementing the user ability to change thease but there are many more wallpaper options inside static/images/wallpaper)</p>
 -  
   
 ![240524_14h26m12s_screenshot](https://github.com/IgorD-lab/Focus/assets/74680803/24a56f02-3588-4c17-b07b-fe0d3e013ed4)  
