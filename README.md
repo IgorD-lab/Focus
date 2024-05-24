@@ -50,7 +50,7 @@ http://127.0.0.1:5000/
 *** 码农万岁 ***  
 
 # Gallery:  
--  
+
 **> Timer**  
 ![240524_14h24m56s_screenshot](https://github.com/IgorD-lab/Focus/assets/74680803/c101422d-4fd5-4d9b-9faa-3e57f21ee6f1)  
 -
