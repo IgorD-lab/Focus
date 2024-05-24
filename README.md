@@ -64,7 +64,7 @@ I appreciate your understanding and look forward to bringing you the improved ve
 ***> Quiz Decks***  
 ![240524_14h23m48s_screenshot](https://github.com/IgorD-lab/Focus/assets/74680803/43bf96f1-6f57-48ce-9cf5-a24ac608112b)  
 
--  
+
 ***> Different Wallpaper options***   
 <p>(I never got around to implementing the user ability to change thease but there are many more wallpaper options inside static/images/wallpaper)</p>
   
