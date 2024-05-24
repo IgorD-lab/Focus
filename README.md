@@ -1,4 +1,4 @@
-## Project Status: Abandoned - Planned Remake in Django + React
+![240524_14h24m56s_screenshot](https://github.com/IgorD-lab/Focus/assets/74680803/3b973b9b-ae73-4625-9ce6-db91363472fa)## Project Status: Abandoned - Planned Remake in Django + React
 
 **Current Status and Future Plans**  
 
@@ -50,3 +50,27 @@ I appreciate your understanding and look forward to bringing you the improved ve
 码农万岁
 
 **Gallery:**
+</Timer>  
+![240524_14h24m56s_screenshot](https://github.com/IgorD-lab/Focus/assets/74680803/c101422d-4fd5-4d9b-9faa-3e57f21ee6f1)  
+
+</Notes>  
+![240524_14h20m51s_screenshot](https://github.com/IgorD-lab/Focus/assets/74680803/be8ae772-42e4-41b3-843c-9b88d8b29855)  
+
+</Todo>  
+![240524_14h22m21s_screenshot](https://github.com/IgorD-lab/Focus/assets/74680803/977b07c7-fbd2-400a-b4e5-e82ecebcca69)  
+
+</Quiz Decks>  
+![240524_14h23m48s_screenshot](https://github.com/IgorD-lab/Focus/assets/74680803/43bf96f1-6f57-48ce-9cf5-a24ac608112b)  
+
+</Different Wallpaper options> 
+(I never got around to implementing the user ability to change thease but there are many more wallpaper options inside static/images/wallpaper)
+![240524_14h26m12s_screenshot](https://github.com/IgorD-lab/Focus/assets/74680803/24a56f02-3588-4c17-b07b-fe0d3e013ed4)  
+![240524_14h27m00s_screenshot](https://github.com/IgorD-lab/Focus/assets/74680803/2d620a42-bd23-43ad-a998-2e4ec9377ff3)  
+![240524_14h31m25s_screenshot](https://github.com/IgorD-lab/Focus/assets/74680803/7e236270-b91b-48d8-9d3d-5666f8b0551f)  
+![240524_14h31m57s_screenshot](https://github.com/IgorD-lab/Focus/assets/74680803/f4abfacf-35f2-489b-946b-5f7d20d65dd3)  
+
+
+
+
+
+
