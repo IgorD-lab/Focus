@@ -46,8 +46,8 @@ flask --app main run
 Now you can see the site at:  
 http://127.0.0.1:5000/  
 
-***I appreciate your understanding and look forward to bringing you the improved version of this project soon!***  
-***码农万岁***  
+**I appreciate your understanding and look forward to bringing you the improved version of this project soon!**  
+**码农万岁**  
 
 # Gallery:  
 
