@@ -39,12 +39,12 @@ https://github.com/topics/pomodoro-timer
 
 **If you still wish to run this project:**
 - clone the repository:  
-git clone https://github.com/IgorD-lab/Focus.git
+git clone https://github.com/IgorD-lab/Focus.git  
 - in console run:  
-pip install -r requirements.txt
-flask --app main run
-Now you can see the site at:
-http://127.0.0.1:5000/
+pip install -r requirements.txt  
+flask --app main run  
+Now you can see the site at:  
+http://127.0.0.1:5000/  
 
 I appreciate your understanding and look forward to bringing you the improved version of this project soon!  
 码农万岁
