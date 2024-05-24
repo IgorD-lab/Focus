@@ -1,4 +1,4 @@
-![240524_14h24m56s_screenshot](https://github.com/IgorD-lab/Focus/assets/74680803/3b973b9b-ae73-4625-9ce6-db91363472fa)## Project Status: Abandoned - Planned Remake in Django + React
+## Project Status: Abandoned - Planned Remake in Django + React
 
 **Current Status and Future Plans**  
 
