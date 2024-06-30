@@ -26,21 +26,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const buttons = card.querySelectorAll('button');
         const answer = card.children[2]; // Assuming the answer <p> is the third child
 
-        buttons[0].addEventListener('click', () => { // Reveal button
-            answer.style.display = 'block';
-            buttons[0].style.display = 'none';
-        });
-
-        buttons[1].addEventListener('click', () => { // Correct button
+        buttons[0].addEventListener('click', () => { // Correct button\
             score++;
             showNextCard();
         });
 
-        buttons[2].addEventListener('click', () => { // Incorrect button
-            showNextCard();
-        });
-
-        buttons[3].addEventListener('click', () => { // Next button
+        buttons[1].addEventListener('click', () => { // Incorrect button
             showNextCard();
         });
     });

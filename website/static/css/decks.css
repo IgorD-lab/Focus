@@ -94,14 +94,13 @@ body {
   justify-content: space-between;
 }
 
-.form-card-container {
-  width: 60%;
-  height: 85%;
-  margin-top: auto;
-  margin-bottom: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.form-title {
+  align-self: center;
+  color: white;
+}
+
+.start-quiz-btn {
+  align-self: flex-end;
 }
 
 .start-quiz-btn a {
@@ -119,15 +118,6 @@ body {
 
 .start-quiz-btn a:hover {
   background-color: #e9ecef;
-}
-
-.form-title {
-  align-self: center;
-  color: white; /* Ensure consistency in form title color */
-}
-
-.start-quiz-btn {
-  align-self: flex-end;
 }
 
 .custom-input {
@@ -159,21 +149,11 @@ body {
   background-color: #357ABD;
 }
 
-.form-question-container,
-.form-answer-container {
-  color: white; /* Changed from black */
-}
-
-.deck-title {
-  color: white;
-}
-
-/* Flip Card */
-
 .card-container {
   width: 350px;
   height: 500px;
   perspective: 800px;
+  margin: 0 auto;
 }
 
 .card-container:hover > .card {
@@ -182,14 +162,12 @@ body {
 }
 
 .card {
+  border-radius: 2rem;
   height: 100%;
   width: 100%;
   position: relative;
   transition: transform 1500ms;
   transform-style: preserve-3d;
-  display: flex; /* Ensure the card is not set to display:none */
-  opacity: 1; /* Ensure the card is fully opaque */
-  visibility: visible; /* Ensure the card is not hidden */
 }
 
 .front,
@@ -203,11 +181,16 @@ body {
 }
 
 .front {
-  background-color: #4a77ae;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
 }
 
 .back {
-  background-color: #3a3a3a;
+  background-color: #a74444;
   transform: rotateY(180deg);
   display: flex;
   flex-direction: column;
@@ -216,25 +199,12 @@ body {
   gap: 5rem;
 }
 
-.card-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-
-.flashcard {
-  background-color: #272525;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+.button-container {
   text-align: center;
-  width: 80%;
-  margin: 20px auto;
+  margin-top: 20px;
 }
 
-.card-actions button {
+button {
   margin: 10px;
   padding: 10px 20px;
   border: none;
@@ -242,8 +212,61 @@ body {
   background-color: #4a90e2;
   color: white;
   cursor: pointer;
+  display: inline-block;
 }
 
-.card-actions button:hover {
+button:hover {
   background-color: #357ABD;
+}
+
+.incorrect-btn {
+  background-color: #d9534f;
+}
+
+.incorrect-btn:hover {
+  background-color: #c9302c;
+}
+
+.quiz-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 170px); /* Adjust this value based on the actual height of your navbar */
+  padding-top: 40px; /* Optional: Adjust this value to give some space from the navbar */
+}
+
+#quiz-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4a90e2;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+}
+
+button:hover {
+  background-color: #357ABD;
+}
+
+.incorrect-btn {
+  background-color: #d9534f;
+}
+
+.incorrect-btn:hover {
+  background-color: #c9302c;
 }
