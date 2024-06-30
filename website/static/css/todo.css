@@ -1,0 +1,42 @@
+/* Default horizontal layout */
+.card-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-title, .card-description {
+    flex: 1 1 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-buttons {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Breakpoint for switching to vertical layout */
+@media (max-width: 768px) {
+    .card-body {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .card-title, .card-description {
+        white-space: normal;
+    }
+
+    .card-buttons {
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+.container {
+    padding-top: 4rem; /* Increase top padding */
+    padding-bottom: 4rem; /* Increase bottom padding */
+}

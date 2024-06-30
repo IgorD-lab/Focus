@@ -1,106 +1,77 @@
-{% extends "layout.html" %} {% block title %}Todo{% endblock %} {% block content
-%}
-<div class="container mx-auto p-4">
-  <div class="flex flex-wrap flex-shrink">
-    <div class="w-full md:w-1/2">
-      <div class="p-4">
+{% extends "layout.html" %} {% block title %}Todo{% endblock %} {% block content %}
+<div class="container p-4">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="mb-4">
         <form id="form-Task" method="POST">
-          <div class="mb-4">
+          <div class="form-group">
             <input
               type="text"
               id="title"
               name="title"
-              class="shadow-md backdrop-blur-md bg-opacity-10 bg-white w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-primaryD focus:border-primaryD dark:text-textD dark:placeholder-gray-500 dark:border-gray-300 dark:focus:ring-gray-400 dark:focus:border-gray-500"
+              class="form-control"
               maxlength="50"
               autocomplete="off"
               placeholder="Title"
               required
             />
           </div>
-          <div class="mb-4">
+          <div class="form-group mt-4">
             <textarea
               id="description"
               name="description"
-              cols="30"
+              class="form-control"
               rows="10"
-              class="shadow-md backdrop-blur-md bg-opacity-10 bg-white w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-primaryD focus:border-primaryD dark:text-textD dark:placeholder-gray-500 dark:border-gray-300 dark:focus:ring-gray-400 dark:focus:border-gray-500"
               maxlength="500"
               autocomplete="off"
               placeholder="Description"
               required
             ></textarea>
           </div>
-          <button
-            type="submit"
-            class="w-full px-3 py-4 text-textD bg-hoverButtonD rounded-md focus:bg-hoverButtonD focus:outline-none"
-          >
-            Save
-          </button>
+          <div class="form-group mt-3">
+            <button
+              type="submit"
+              class="btn btn-primary btn-block"
+              style="width: 100%;"
+            >
+              Save
+            </button>
+          </div>
         </form>
       </div>
     </div>
-    <div class="w-full md:w-1/2 overflow-hidden">
-      <div
-        class="flex items-center justify-between px-3 py-2 text-textD shadow-md backdrop-blur-md bg-opacity-10 bg-white"
-      >
-        <p class="font-semibold">Title</p>
-        <p class="font-semibold">Description</p>
-        <p class="font-semibold text-right">Delete</p>
-      </div>
-      <hr />
-      <div
-        style="height: 49rem"
-        class="p-4 overflow-y-scroll no-scrollbar shadow-md backdrop-blur-md bg-opacity-10 bg-white"
-      >
-        {% for todo in user.todo %}
-        <div
-          class="rounded-lg mb-3 shadow-md backdrop-blur-md bg-opacity-10 bg-white"
-        >
-          <div class="p-4">
-            <div class="flex items-center justify-between">
-              <div class="flex-1 p-2">
-                <p class="break-long-words text-textD">{{ todo.title }}</p>
-              </div>
-              <div class="flex-1">
-                <p class="break-long-words text-textD">
-                  {{ todo.description }}
-                </p>
-              </div>
-              <div class="flex-1-c text-right ml-2">
-                {% if todo.completed %}
-                <button
-                  onclick="completeTodo('{{ todo.id }}')"
-                  class="animated-button-not-complete ml-auto bg-green-500 text-white"
-                >
-                  <span>&check;</span>
-                  <span></span>
-                </button>
-                {% else %}
-                <button
-                  onclick="completeTodo('{{ todo.id }}')"
-                  class="animated-button-not-complete ml-auto"
-                >
-                  <span>&check;</span>
-                  <span></span>
-                </button>
-                {% endif %}
-                <button
-                  onclick="deleteTodo('{{ todo.id }}')"
-                  class="button ml-3"
-                >
-                  <span
-                    ><svg viewBox="0 0 448 512" class="svgIcon">
-                      <path
-                        d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"
-                      ></path></svg
-                  ></span>
-                  <span></span>
-                </button>
+    <div class="col-md-6">
+      <div class="mb-3">
+        <div class="d-flex justify-content-between p-2 bg-white rounded">
+          <span class="font-weight-bold">Title</span>
+          <span class="font-weight-bold">Description</span>
+          <span class="font-weight-bold text-right">Delete</span>
+        </div>
+        <hr />
+        <div class="overflow-auto" style="height: 49rem;">
+          {% for todo in user.todo %}
+          <div class="card mb-3">
+            <div class="card-body">
+              <div class="d-flex justify-content-between">
+                <div class="p-2 flex-grow-1">
+                  <p>{{ todo.title }}</p>
+                </div>
+                <div class="p-2 flex-grow-1">
+                  <p>{{ todo.description }}</p>
+                </div>
+                <div class="ml-2">
+                  <button onclick="completeTodo('{{ todo.id }}')" class="btn btn-success">
+                    <span>&check;</span>
+                  </button>
+                  <button onclick="deleteTodo('{{ todo.id }}')" class="btn btn-danger ml-3">
+                    <span>Delete</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
+          {% endfor %}
         </div>
-        {% endfor %}
       </div>
     </div>
   </div>

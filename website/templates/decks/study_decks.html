@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block title %}Study Decks{% endblock %}
+
+{% block content %}
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/decks.css') }}">
+</head>
+
+<h1 class="study-decks-title">Your Study Decks</h1>
+
+<div class="new-deck-link">
+    <a href="{{ url_for('views.new_deck') }}">Create New Deck</a>
+</div>
+
+<ul class="deck-list">
+    {% for deck in decks %}
+    <li class="deck-item" onclick="window.location='{{ url_for('views.view_deck', deck_id=deck.id) }}'">
+        {{ deck.title }}
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
+<!--  Lists all decks with options to view, edit, or delete them, and a button to create a new deck. -->

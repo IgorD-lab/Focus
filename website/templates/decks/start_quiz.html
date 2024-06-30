@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block title %}Quiz{% endblock %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/decks.css') }}">
+    <script src="{{ url_for('static', filename='js/decks.js') }}"></script>
+</head>
+<h1>Quiz Time!</h1>
+<div id="quiz-container">
+    {% for flashcard in flashcards %}
+    <div data-question-id="{{ loop.index }}" style="display:none;">
+        <p>Question: {{ flashcard.question }}</p>
+        <button>Reveal Answer</button>
+        <p style="display:none;">Answer: {{ flashcard.answer }}</p>
+        <button style="display:inline;">Correct</button>
+        <button style="display:inline;">Incorrect</button>
+        <button style="display:none;">Next</button>
+    </div>
+    {% endfor %}
+</div>
+<p id="score">Score: 0</p>
+<p id="completion-message" style="display:none;">You have finished the quiz!</p>
+{% endblock %}

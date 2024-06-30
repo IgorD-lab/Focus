@@ -56,11 +56,16 @@ function resetTimer(newTime) {
 
 // Event listeners for the buttons
 startButton.addEventListener("click", () => {
+  const playIcon = document.getElementById("play-icon");
+  const pauseIcon = document.getElementById("pause-icon");
+
   if (!isRunning) {
-    startButton.textContent = "pause";
+    playIcon.classList.add("hidden");
+    pauseIcon.classList.remove("hidden");
     startTimer();
   } else {
-    startButton.textContent = "start";
+    playIcon.classList.remove("hidden");
+    pauseIcon.classList.add("hidden");
     pauseTimer();
   }
 });

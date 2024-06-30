@@ -1,0 +1,22 @@
+{% extends "layout.html" %} 
+{% block title %}New Deck{% endblock %}
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/decks.css') }}">
+</head>
+<form action="" method="post">
+    Deck Title: <input type="text" name="title"><br>
+    <input type="submit" value="Create Deck">
+</form>
+{% endblock %}
+<!-- Form to create a new deck. -->
+
+<div class="card-container">
+    <div class="card">
+      <div class="front"></div>
+      <div class="back">
+        <h1>Back of Card</h1>
+        <p>Additional info on the back of the card</p>
+      </div>
+    </div>
+  </div>

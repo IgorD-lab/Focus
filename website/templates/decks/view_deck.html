@@ -1,0 +1,40 @@
+{% extends "layout.html" %} {% block title %}View Deck{% endblock %} 
+{% block content %}
+<head>
+  <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/decks.css') }}"
+  />
+</head>
+<div class="container-custom">
+  <div class="left-section">
+    <h2 class="form-title">Add a Card to the Deck</h2>
+    <form action="" method="post">
+      <div class="form-question-container">
+        Question:
+        <input type="text" name="question" class="form-question custom-input">
+      </div>
+      <div class="form-answer-container">
+        Answer:
+        <input type="text" name="answer" class="form-answer custom-input">
+      </div>
+      <input type="submit" value="Add Flashcard" class="btn-submit" />
+    </form>
+  </div>
+  <div class="right-section">
+    <div class="deck-details">
+      <h1 class="deck-title">Cards in deck {{ deck.title }}:</h1>
+      <div class="styled-list-container"> <!-- Container for scrolling -->
+        <ul class="styled-list">
+          {% for flashcard in flashcards %}
+          <li>{{ flashcard.question }} - {{ flashcard.answer }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="start-quiz-btn">
+        <a href="{{ url_for('views.start_quiz', deck_id=deck.id) }}">Start Quiz</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,9 @@
+h1 {
+    color: white; /* Set text color to white */
+    text-align: center; /* Center text horizontally */
+    position: absolute; /* Positioning the element absolutely */
+    font-size: 100px;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust the position to truly center */
+}

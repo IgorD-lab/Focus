@@ -1,217 +1,67 @@
-<!-- shift + 1 to auto populate -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="../static/images/focusIcon.png" />
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/focusIcon.png') }}" />
     <link
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600&amp;display=swap"
       rel="stylesheet"
     />
-    <link
-      href="https://cdn.tailwindcss.com/2.2.19/tailwind.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="{{url_for('static',filename='css/main.css')}}"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/src/output.css') }}"
-    />
-    <link rel="stylesheet" href="./static/css/body.css" />
-    <link rel="stylesheet" href="./static/css/loader.css" />
-    <link rel="stylesheet" href="./static/css/dropdown.css" />
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
     <title>{% block title %}Layout error{% endblock %}</title>
-    <!-- allow Home to be overwritten using jinja -->
   </head>
-  <body
-    class="bg-center bg-no-repeat bg-cover bg-fixed h-full w-full"
-    style="background-image: url(../static/images/wallpaper/wallpaper6.jpg)"
-  >
-    <div id="loader"></div>
-    <!-- ------------------------------------------ NAV ------------------------------------------------------- -->
-    <nav class="bg-gray-700">
-      <div class="mx-auto px-2 sm:px-6 lg:px-8">
-        <div class="relative flex h-16 items-center justify-between">
-          <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-            <!-- Mobile menu button-->
-            <button
-              type="button"
-              class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-              aria-controls="mobile-menu"
-              aria-expanded="false"
-              onclick="toggleMobile()"
-            >
-              <span class="absolute -inset-0.5"></span>
-              <span class="sr-only">Open main menu</span>
-              <!--
-                Icon when menu is closed.
-    
-                Menu open: "hidden", Menu closed: "block"
-              -->
-              <svg
-                class="block h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                />
-              </svg>
-              <!--
-                Icon when menu is open.
-    
-                Menu open: "block", Menu closed: "hidden"
-              -->
-              <svg
-                class="hidden h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-          </div>
-          <div
-            class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
-          >
-            <div class="flex flex-shrink-0 items-center">
-              <img
-                class="h-8 w-auto"
-                src="../static/images/focusLogo1.png"
-                alt="Your Company"
-              />
-            </div>
-            <div class="hidden sm:ml-6 sm:block">
-              <div class="flex space-x-4">
-                {% if user.is_authenticated %}
-                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                <a
-                  href="/"
-                  class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
-                  aria-current="page"
-                  >Dashboard</a
-                >
-                <a
-                  href="/timer"
-                  class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-                  >Timer</a
-                >
-                <a
-                  href="/notes"
-                  class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-                  >Notes</a
-                >
-                <a
-                  href="/todo"
-                  class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium ml-auto"
-                  >Todo</a
-                >
-                <a
-                  href="/decks"
-                  class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-                  >Decks</a
-                >
-              </div>
-            </div>
-            <a
-              href="/logout"
-              class="px-4 py-2 text-sm text-gray-300 ml-auto hidden sm:block"
-              >Sign out</a
-            >
-          </div>
-          {% else %}
-          <a
-            href="/login"
-            class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-            >Login</a
-          >
-          <a
-            href="/register"
-            class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-            >Register</a
-          >
-          {% endif %}
-        </div>
-      </div>
-
-      <!-- Mobile menu, show/hide based on menu state. -->
-      <div class="sm:hidden hidden" id="mobile-menu">
-        <div class="space-y-1 px-2 pb-3 pt-2">
+  <body style="background-image: url({{ url_for('static', filename='images/wallpaper/wallpaper1.jpg') }})">
+    <!-- ----------------------------NAVBAR------------------------------------ -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+          <img src="../static/images/focusLogo2.png" alt="Your Company" style="height: 40px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/timer">Timer</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/notes">Notes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/todo">Todo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/study-decks">Study Decks</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/register">Register</a>
+            </li>
+            {% endif %}
+          </ul>
           {% if user.is_authenticated %}
-          <a
-            href="/"
-            class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
-            aria-current="page"
-            >Dashboard</a
-          >
-          <a
-            href="/timer"
-            class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
-            >Timer</a
-          >
-          <a
-            href="/notes"
-            class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
-            >Notes</a
-          >
-          <a
-            href="/todo"
-            class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
-            >Todo</a
-          >
-
-          <a
-            href="/decks"
-            class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
-            >Decks</a
-          >
-
-          <a href="/logout" class="block px-4 py-2 text-sm text-gray-300"
-            >Sign out</a
-          >
-          {% else %}
-          <a
-            href="/login"
-            class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
-            >Login</a
-          >
-          <a
-            href="/register"
-            class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium"
-            >Register</a
-          >
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Sign out</a>
+            </li>
+          </ul>
           {% endif %}
         </div>
       </div>
     </nav>
-
     <!-- ----------------------------SPOTIFY------------------------------------ -->
-    <div id="spotify-player">
+    <!-- <div id="spotify-player">
       <iframe
-        style="
-          border-radius: 12px;
-          bottom: -60px;
-          left: 0;
-          position: fixed;
-          z-index: 1;
-        "
         src="https://open.spotify.com/embed/playlist/2L8Gm7T2aJvRj1ih03UeKv?utm_source=generator&theme=0"
         width="20%"
         height="150"
@@ -221,55 +71,23 @@
         class="ml-2"
         loading="lazy"
       ></iframe>
-    </div>
+    </div> -->
 
-    <!-- ---------------------------------------------------------------- -->
+    {% with messages = get_flashed_messages(with_categories=true) %} 
+      {% if messages %} 
+        {% for category, message in messages %} 
+          <div class="alert alert-{{ category }}" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
 
-    <!--Flash Messages combined with python: flash('Password must be at least 7 characters', category='error') instead of alert works on every page-->
-    {% with messages = get_flashed_messages(with_categories=true) %} {% if
-    messages %} {% for category, message in messages %} {% if category== 'error'
-    %}
-    <div
-      class="bg-red-500 text-white px-6 py-4 border-0 rounded relative mb-4 alert alert-danger alter-dismissable fade show flex justify-between items-center"
-      role="alert"
-    >
-      {{ message }}
-      <button type="button" class="close" data-dismiss="alert">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    {% else %}
-    <div
-      class="bg-green-500 text-white px-6 py-4 border-0 rounded relative mb-4 alert alert-success alter-dismissable fade show flex justify-between items-center"
-      role="alert"
-    >
-      <span>{{ message }}</span>
-      <button type="button" class="close" data-dismiss="alert">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-
-    {% endif %} {% endfor %} {% endif %} {% endwith %}
-    <!-- <div class="content"> -->
     {% block content %}{% endblock %}
-    <!-- </div> -->
 
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
     <script src="../static/js/script.js"></script>
     <script src="../static/js/flash.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>

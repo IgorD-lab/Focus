@@ -1,53 +1,63 @@
-{% extends "layout.html" %} {% block title %}Notes{% endblock %} {% block
-content %}
-<div class="container mx-auto text-textD p-2">
-  <form method="POST" class="my-4">
-    <textarea
-      name="note"
-      id="note"
-      class="border-b-2 rounded w-full p-2 shadow-md backdrop-blur-md bg-opacity-10 bg-white"
-    ></textarea>
-    <div class="text-center my-4">
-      <button
-        type="submit"
-        class="bg-primaryD hover:bg-hoverButtonD text-textD font-bold py-2 px-4 rounded"
-      >
-        Add Note
-      </button>
+{% extends "layout.html" %} {% block title %} Notes {% endblock %} {% block content %}
 
-      <button
-        href="#"
-        onclick="deleteNoteAll('{{ user.id }}')"
-        class="bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-      >
-        Delete All
-      </button>
+<!-- Design heavily inspired by https://www.codingnepalweb.com/build-a-notes-app-in-html-css-javascript/ -->
+
+<head>
+  <link rel="stylesheet" href="../static/css/notes.css">
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+</head>
+
+<div class="popup-box">
+  <div class="popup">
+    <div class="content">
+      <header>
+        <p></p>
+        <i class="uil uil-times"></i>
+      </header>
+      <form action="" method="POST">
+        <div class="row title">
+          <label>Title</label>
+          <input type="text" id="noteTitle" name="noteTitle" spellcheck="false">
+        </div>
+        <div class="row description">
+          <label>Description</label>
+          <textarea id="noteDescription" name="noteDescription" spellcheck="false"></textarea>
+        </div>
+        <button type="submit" class="btn">Submit</button>
+      </form>
     </div>
-  </form>
-  <div
-    style="height: 36rem"
-    class="p-4 overflow-y-scroll no-scrollbar shadow-md backdrop-blur-md bg-opacity-10 bg-white"
-  >
-    <ul class="list-none" id="notes">
-      {% for note in user.notes %}
-      <li
-        class="border-b border-gray-200 py-4 flex justify-between items-center"
-      >
-        <div class="break-long-words flex-grow">{{ note.data }}</div>
-        <button
-          type="button"
-          class="button flex-shrink-0"
-          onClick="deleteNote('{{ note.id }}')"
-        >
-          <svg viewBox="0 0 448 512" class="svgIcon">
-            <path
-              d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"
-            ></path>
-          </svg>
-        </button>
-      </li>
-      {% endfor %}
-    </ul>
   </div>
 </div>
+<div class="wrapper">
+  <li class="add-box">
+    <div class="icon"><i class="uil uil-plus"></i></div>
+    <p>Add new note</p>
+  </li>
+  {% for note in notes %}
+  <li class="note">
+    <div class="details">
+      <p>{{ note.title }}</p>
+      <span>{{ note.data | replace('\n', '<br>') | safe }}</span>
+    </div>
+    <div class="bottom-content">
+      <span>{{ note.date.strftime('%Y-%m-%d %H:%M') }}</span>
+      <div class="settings">
+        <i onclick="showMenu(this)" class="uil uil-ellipsis-h"></i>
+        <ul class="menu">
+          <li onclick="editNote({{ note.id }}, '{{ note.title }}', '{{ note.data | replace('\n', '<br>') | safe }}')"><i class="uil uil-pen"></i>Edit</li>
+            <form action="{{ url_for('views.delete_note', note_id=note.id) }}" method="POST" style="display: inline;">
+              <input type="hidden" name="note_id" value="{{ note.id }}">
+              <button type="submit" class="delete-button li-button">
+                <i class="uil uil-trash"></i>Delete
+              </button>
+            </form>
+        </ul>
+      </div>
+    </div>
+  </li>
+  {% endfor %}
+</div>
+
+<script src="../static/js/notes.js"></script>
+
 {% endblock %}
