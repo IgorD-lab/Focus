@@ -1,3 +1,11 @@
+:root {
+  --primary-color: #8FAADC;
+  --secondary-color: #4C80C2;
+  --accent-color: #D4E2F2;
+  --text-color: #0A2540;
+  --background-color: #F5FAFF;
+}
+
 body {
     font-family: var(--bs-body-font-family);
     font-size: var(--bs-body-font-size);
@@ -5,238 +13,238 @@ body {
     font-family: "Space Grotesk", sans-serif;
     font-weight: 600;
     overflow: hidden;
-  }
-  
-  /* Hide scrollbar for Chrome, Safari and Opera */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  
-  /* Hide scrollbar for IE, Edge and Firefox */
-  .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
-  
-  .flex-1-c {
-    display: flex;
-    justify-content: flex-end; /* Align buttons to the right */
-    align-items: center; /* Align items vertically in the center */
-  }
-  
-  /* BUTTONS */
-  .button {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: none;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
-    cursor: pointer;
-    transition-duration: 0.3s;
-    overflow: hidden;
-    position: relative;
-  }
-  
-  .svgIcon {
-    width: 12px;
-    transition-duration: 0.3s;
-  }
-  
-  .svgIcon path {
-    fill: white;
-  }
-  
-  .button:hover {
-    width: 50px;
-    border-radius: 100px;
-    transition-duration: 0.3s;
-    background-color: rgb(255, 69, 69);
-    align-items: center;
-  }
-  
-  .button:hover .svgIcon {
-    width: 50px;
-    transition-duration: 0.3s;
-    transform: translateY(100%);
-  }
-  
-  .button::before {
-    position: absolute;
-    top: -17px;
-    content: "Delete";
-    color: white;
-    transition-duration: 0.3s;
-    font-size: 2px;
-  }
-  
-  .button:hover::before {
-    font-size: 13px;
-    opacity: 1;
-    transform: translateY(30px);
-    transition-duration: 0.3s;
-  }
-  
-  /* Animated complete button */
-  
-  .animated-button-not-complete {
-    position: relative;
-    display: inline-block;
-    width: 50px; /* Match the width of the first button */
-    height: 50px; /* Match the height of the first button */
-    padding: 6px 12px;
-    border: none;
-    font-size: 14px;
-    background-color: inherit;
-    border-radius: 100px;
-    font-weight: 600;
-    color: #ffffff40;
-    box-shadow: 0 0 0 2px #ffffff20;
-    cursor: pointer;
-    overflow: hidden;
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-  
-  .animated-button-not-complete span:last-child {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 15px;
-    height: 15px;
-    background-color: #4caf50;
-    border-radius: 50%;
-    opacity: 0;
-    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-  
-  .animated-button-not-complete span:first-child {
-    position: relative;
-    z-index: 1;
-  }
-  
-  .animated-button-not-complete:hover {
-    color: #ffffff;
-  }
-  
-  .animated-button-not-complete:active {
-    scale: 0.95;
-  }
-  
-  .animated-button-not-complete:hover span:last-child {
-    width: 150px;
-    height: 150px;
-    opacity: 1;
-  }
-  
-  .animated-button {
-    position: relative;
-    display: inline-block;
-    padding: 6px 12px;
-    border: none;
-    font-size: 14px;
-    background-color: inherit;
-    border-radius: 100px;
-    font-weight: 600;
-    color: #ffffff40;
-    box-shadow: 0 0 0 2px #ffffff20;
-    cursor: pointer;
-    overflow: hidden;
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-  
-  .animated-button span:last-child {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 15px;
-    height: 15px;
-    background-color: #2196f3;
-    border-radius: 50%;
-    opacity: 0;
-    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-  
-  .animated-button span:first-child {
-    position: relative;
-    z-index: 1;
-  }
-  
-  .animated-button:hover {
-    box-shadow: 0 0 0 5px #2195f360;
-    color: #ffffff;
-  }
-  
-  .animated-button:active {
-    scale: 0.95;
-  }
-  
-  .animated-button:hover span:last-child {
-    width: 150px;
-    height: 150px;
-    opacity: 1;
-  }
-  
-  /* Animated delete button */
-  
-  .animated-button-del {
-    position: relative;
-    display: inline-block;
-    padding: 6px 12px;
-    border: none;
-    font-size: 14px;
-    background-color: inherit;
-    border-radius: 100px;
-    font-weight: 600;
-    color: #ffffff40;
-    box-shadow: 0 0 0 2px #ffffff20;
-    cursor: pointer;
-    overflow: hidden;
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-  
-  .animated-button-del span:last-child {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 15px;
-    height: 15px;
-    background-color: #ff0000;
-    border-radius: 50%;
-    opacity: 0;
-    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-  
-  .animated-button-del span:first-child {
-    position: relative;
-    z-index: 1;
-  }
-  
-  .animated-button-del:hover {
-    box-shadow: 0 0 0 5px #f44336;
-    color: #ffffff;
-  }
-  
-  .animated-button-del:active {
-    scale: 0.95;
-  }
-  
-  .animated-button-del:hover span:last-child {
-    width: 150px;
-    height: 150px;
-    opacity: 1;
-  }
-  
-  .break-long-words {
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    word-break: break-all;
-    word-break: break-word;
-    hyphens: auto;
-  }
-  
+    background-color: var(--background-color);
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.flex-1-c {
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the right */
+  align-items: center; /* Align items vertically in the center */
+}
+
+/* BUTTONS */
+.button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+  cursor: pointer;
+  transition-duration: 0.3s;
+  overflow: hidden;
+  position: relative;
+}
+
+.svgIcon {
+  width: 12px;
+  transition-duration: 0.3s;
+}
+
+.svgIcon path {
+  fill: white;
+}
+
+.button:hover {
+  width: 50px;
+  border-radius: 100px;
+  transition-duration: 0.3s;
+  background-color: rgb(255, 69, 69);
+  align-items: center;
+}
+
+.button:hover .svgIcon {
+  width: 50px;
+  transition-duration: 0.3s;
+  transform: translateY(100%);
+}
+
+.button::before {
+  position: absolute;
+  top: -17px;
+  content: "Delete";
+  color: white;
+  transition-duration: 0.3s;
+  font-size: 2px;
+}
+
+.button:hover::before {
+  font-size: 13px;
+  opacity: 1;
+  transform: translateY(30px);
+  transition-duration: 0.3s;
+}
+
+/* Animated complete button */
+
+.animated-button-not-complete {
+  position: relative;
+  display: inline-block;
+  width: 50px; /* Match the width of the first button */
+  height: 50px; /* Match the height of the first button */
+  padding: 6px 12px;
+  border: none;
+  font-size: 14px;
+  background-color: inherit;
+  border-radius: 100px;
+  font-weight: 600;
+  color: #ffffff40;
+  box-shadow: 0 0 0 2px #ffffff20;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button-not-complete span:last-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 15px;
+  height: 15px;
+  background-color: #4caf50;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button-not-complete span:first-child {
+  position: relative;
+  z-index: 1;
+}
+
+.animated-button-not-complete:hover {
+  color: #ffffff;
+}
+
+.animated-button-not-complete:active {
+  scale: 0.95;
+}
+
+.animated-button-not-complete:hover span:last-child {
+  width: 150px;
+  height: 150px;
+  opacity: 1;
+}
+
+.animated-button {
+  position: relative;
+  display: inline-block;
+  padding: 6px 12px;
+  border: none;
+  font-size: 14px;
+  background-color: inherit;
+  border-radius: 100px;
+  font-weight: 600;
+  color: #ffffff40;
+  box-shadow: 0 0 0 2px #ffffff20;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button span:last-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 15px;
+  height: 15px;
+  background-color: #2196f3;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button span:first-child {
+  position: relative;
+  z-index: 1;
+}
+
+.animated-button:hover {
+  box-shadow: 0 0 0 5px #2195f360;
+  color: #ffffff;
+}
+
+.animated-button:active {
+  scale: 0.95;
+}
+
+.animated-button:hover span:last-child {
+  width: 150px;
+  height: 150px;
+  opacity: 1;
+}
+
+/* Animated delete button */
+
+.animated-button-del {
+  position: relative;
+  display: inline-block;
+  padding: 6px 12px;
+  border: none;
+  font-size: 14px;
+  background-color: inherit;
+  border-radius: 100px;
+  font-weight: 600;
+  color: #ffffff40;
+  box-shadow: 0 0 0 2px #ffffff20;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button-del span:last-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 15px;
+  height: 15px;
+  background-color: #ff0000;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button-del span:first-child {
+  position: relative;
+  z-index: 1;
+}
+
+.animated-button-del:hover {
+  box-shadow: 0 0 0 5px #f44336;
+  color: #ffffff;
+}
+
+.animated-button-del:active {
+  scale: 0.95;
+}
+
+.animated-button-del:hover span:last-child {
+  width: 150px;
+  height: 150px;
+  opacity: 1;
+}
+
+.break-long-words {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+  word-break: break-word;
+  hyphens: auto;
+}

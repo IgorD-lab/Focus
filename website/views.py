@@ -163,4 +163,12 @@ def start_quiz(deck_id):
         random.shuffle(flashcards)
     return render_template('decks/start_quiz.html', flashcards=flashcards)
 
-
+@views.route('/study-decks/<int:deck_id>/delete-flashcard/<int:flashcard_id>', methods=['POST'])
+@login_required
+def delete_flashcard(deck_id, flashcard_id):
+    flashcard = Flashcard.query.get_or_404(flashcard_id)
+    if flashcard.deck_id == deck_id and flashcard.deck.user_id == current_user.id:
+        db.session.delete(flashcard)
+        db.session.commit()
+        return jsonify({'success': 'Flashcard deleted'}), 200
+    return jsonify({'error': 'Unauthorized'}), 403

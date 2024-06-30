@@ -12,11 +12,11 @@
     <form action="" method="post">
       <div class="form-question-container">
         Question:
-        <input type="text" name="question" class="form-question custom-input">
+        <textarea name="question" class="form-question custom-input" rows="1"></textarea>
       </div>
       <div class="form-answer-container">
         Answer:
-        <input type="text" name="answer" class="form-answer custom-input">
+        <textarea name="answer" class="form-answer custom-input" rows="1"></textarea>
       </div>
       <input type="submit" value="Add Flashcard" class="btn-submit" />
     </form>
@@ -24,10 +24,14 @@
   <div class="right-section">
     <div class="deck-details">
       <h1 class="deck-title">Cards in deck {{ deck.title }}:</h1>
-      <div class="styled-list-container"> <!-- Container for scrolling -->
+      <div class="styled-list-container">
         <ul class="styled-list">
           {% for flashcard in flashcards %}
-          <li>{{ flashcard.question }} - {{ flashcard.answer }}</li>
+          <li id="flashcard-{{ flashcard.id }}">
+            <span class="question">{{ flashcard.question }}</span>
+            <span class="answer">{{ flashcard.answer }}</span>
+            <button class="delete-btn" onclick="deleteFlashcard({{ flashcard.id }})" data-flashcard-id="{{ flashcard.id }}">Delete</button>
+          </li>
           {% endfor %}
         </ul>
       </div>
@@ -37,4 +41,21 @@
     </div>
   </div>
 </div>
+<script>
+  function deleteFlashcard(flashcardId) {
+    const deckId = {{ deck.id }};
+    fetch(`/study-decks/${deckId}/delete-flashcard/${flashcardId}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then(response => {
+      if (response.ok) {
+        document.getElementById(`flashcard-${flashcardId}`).remove();
+      } else {
+        response.json().then(data => console.error('Error:', data.error));
+      }
+    }).catch(error => console.error('Error:', error));
+  }
+</script>
 {% endblock %}

@@ -43,9 +43,14 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             document.getElementById('completion-message').style.display = 'block';
             document.getElementById('quiz-container').style.display = 'none';
-            document.getElementById('score').textContent = 'Final Score: ' + score;
+            document.getElementById('restart-quiz-btn').style.display = 'block'; // Show the restart button
+            document.getElementById('score').textContent = `Final Score: ${score}/${flashcards.length}`;
         }
     }
+
+    document.getElementById('restart-quiz-btn').addEventListener('click', function() {
+        window.history.back(); // Go back to the previous page
+    });
 
     resetQuiz(); // Initialize the quiz
 });

@@ -2,6 +2,10 @@ body {
   color: white;
 }
 
+ul {
+  list-style: none;
+}
+
 .study-decks-title {
   font-size: 28px;
   color: #4a90e2;
@@ -36,6 +40,7 @@ body {
   padding: 0;
   width: 80%;
   margin: auto;
+  list-style: none;
 }
 
 .deck-item {
@@ -55,6 +60,10 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
+.deck-title {
+  color: #ffffff;
+}
+
 .styled-list-container {
   max-height: 700px;
   overflow-y: auto;
@@ -69,12 +78,41 @@ body {
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column; /* Ensure items are stacked vertically */
+  align-items: flex-start; /* Align items to the start */
+  word-wrap: break-word; /* Ensure long words do not overflow */
+  overflow-wrap: break-word; /* Break words to prevent overflow */
+  max-width: 100%; /* Ensure list items do not exceed their container */
+  width: 95%; /* Set a specific width to control layout */
+}
+
+.styled-list li::before,
+.styled-list li::after {
+  content: none; /* Remove content from pseudo-elements */
+}
+
+.styled-list li span.question,
+.styled-list li span.answer {
+  display: block; /* Make spans block elements */
+  width: 100%; /* Full width to utilize the entire line */
+  padding: 2px 0; /* Padding for better readability */
+}
+
+.styled-list li span.question::before {
+  content: "Q: "; /* Add question label */
+  font-weight: bold;
+}
+
+.styled-list li span.answer::before {
+  content: "A: "; /* Add answer label */
+  font-weight: bold;
 }
 
 .container-custom {
   display: flex;
   justify-content: space-between;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 100px);
 }
 
 .left-section,
@@ -121,7 +159,8 @@ body {
 }
 
 .custom-input {
-  width: 90%;
+  width: 95%; /* Increased width */
+  max-height: 200px; /* Maximum height before scrolling */
   padding: 8px 15px;
   margin: 8px 0;
   display: inline-block;
@@ -129,6 +168,8 @@ body {
   border-radius: 4px;
   box-sizing: border-box;
   transition: border-color 0.3s ease-in-out;
+  resize: none; /* Disable manual resizing */
+  overflow: auto; /* Enable scrolling when content exceeds the element's box */
 }
 
 .custom-input:focus {
@@ -269,4 +310,10 @@ button:hover {
 
 .incorrect-btn:hover {
   background-color: #c9302c;
+}
+
+#score {
+    font-size: 24px; /* Larger font size */
+    font-weight: bold; /* Make the font bold */
+    color: #99bfeb; /* Adjust the color if needed */
 }
