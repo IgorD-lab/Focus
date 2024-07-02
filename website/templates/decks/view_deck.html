@@ -12,31 +12,51 @@
     <form action="" method="post">
       <div class="form-question-container">
         Question:
-        <textarea name="question" class="form-question custom-input" rows="1"></textarea>
+        <textarea name="question" class="form-question custom-input" rows="1" oninput="adjustTextarea(this)" maxlength="900"></textarea>
       </div>
       <div class="form-answer-container">
         Answer:
-        <textarea name="answer" class="form-answer custom-input" rows="1"></textarea>
+        <textarea name="answer" class="form-answer custom-input" rows="1" oninput="adjustTextarea(this)" maxlength="900"></textarea>
       </div>
-      <input type="submit" value="Add Flashcard" class="btn-submit" />
+      <input type="submit" value="Add Flashcard" class="button-30" />
     </form>
   </div>
   <div class="right-section">
     <div class="deck-details">
-      <h1 class="deck-title">Cards in deck {{ deck.title }}:</h1>
+      <h1 class="deck-title">
+        {% if flashcards|length > 0 %}
+          Cards in deck {{ deck.title }}:
+        {% else %}
+          No cards in the deck
+        {% endif %}
+      </h1>
       <div class="styled-list-container">
         <ul class="styled-list">
           {% for flashcard in flashcards %}
           <li id="flashcard-{{ flashcard.id }}">
-            <span class="question">{{ flashcard.question }}</span>
-            <span class="answer">{{ flashcard.answer }}</span>
-            <button class="delete-btn" onclick="deleteFlashcard({{ flashcard.id }})" data-flashcard-id="{{ flashcard.id }}">Delete</button>
+            <div class="content">
+              <span class="question">{{ flashcard.question }}</span>
+              <span class="answer">{{ flashcard.answer }}</span>
+            </div>
+            <div class="button-container">
+              <button class="button-30-bad" onclick="deleteFlashcard({{ flashcard.id }})" data-flashcard-id="{{ flashcard.id }}">Delete</button>
+            </div>
           </li>
           {% endfor %}
         </ul>
       </div>
-      <div class="start-quiz-btn">
-        <a href="{{ url_for('views.start_quiz', deck_id=deck.id) }}">Start Quiz</a>
+      <div class="start-quiz-btn-container">
+        {% if flashcards|length != 0 %}
+          <a href="{{ url_for('views.start_quiz', deck_id=deck.id) }}" 
+            class="button-30">
+            Start Quiz
+          </a>
+        {% else %}
+          <a 
+            class="button-30-disabled">
+            Start Quiz
+          </a>
+        {% endif %}
       </div>
     </div>
   </div>
@@ -56,6 +76,12 @@
         response.json().then(data => console.error('Error:', data.error));
       }
     }).catch(error => console.error('Error:', error));
+  }
+</script>
+<script>
+  function adjustTextarea(textarea) {
+    textarea.style.height = 'auto';
+    textarea.style.height = (textarea.scrollHeight) + 'px';
   }
 </script>
 {% endblock %}

@@ -147,10 +147,13 @@ def view_deck(deck_id):
         question = request.form.get('question')
         answer = request.form.get('answer')
         if question and answer:
-            flashcard = Flashcard(question=question, answer=answer, deck_id=deck.id)
-            db.session.add(flashcard)
-            db.session.commit()
-            flash('Flashcard added!', category='success')
+            if len(question) > 900 or len(answer) > 900:
+                flash('Question and Answer must be less than 900 characters.', category='error')
+            else:
+                flashcard = Flashcard(question=question, answer=answer, deck_id=deck.id)
+                db.session.add(flashcard)
+                db.session.commit()
+                flash('Flashcard added!', category='success')
     flashcards = Flashcard.query.filter_by(deck_id=deck.id).all()
     return render_template('decks/view_deck.html', deck=deck, flashcards=flashcards)
 
@@ -171,4 +174,14 @@ def delete_flashcard(deck_id, flashcard_id):
         db.session.delete(flashcard)
         db.session.commit()
         return jsonify({'success': 'Flashcard deleted'}), 200
+    return jsonify({'error': 'Unauthorized'}), 403
+
+@views.route('/study-decks/<int:deck_id>/delete', methods=['POST'])
+@login_required
+def delete_deck(deck_id):
+    deck = Deck.query.get_or_404(deck_id)
+    if deck.user_id == current_user.id:
+        db.session.delete(deck)
+        db.session.commit()
+        return jsonify({'success': 'Deck deleted'}), 200
     return jsonify({'error': 'Unauthorized'}), 403

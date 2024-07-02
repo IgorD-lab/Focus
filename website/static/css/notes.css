@@ -11,7 +11,7 @@
 } */
 ::selection{
   color: #fff;
-  background: #618cf8;
+  background: #333333; /* Changed from #000000 to #333333 */
 }
 .wrapper{
   margin: 50px;
@@ -41,14 +41,14 @@
 .add-box .icon{
   height: 78px;
   width: 78px;
-  color: #88ABFF;
+  color: #333333; /* Changed from #000000 to #333333 */
   font-size: 40px;
   border-radius: 50%;
   justify-content: center;
-  border: 2px dashed #88ABFF;
+  border: 2px dashed #333333; /* Changed from #000000 to #333333 */
 }
 .add-box p{
-  color: #88ABFF;
+  color: #333333; /* Changed from #000000 to #333333 */
   font-weight: 500;
   margin-top: 20px;
 }
@@ -145,7 +145,7 @@
   display: flex;
   align-items: center;
   background-color: #ffffff;
-  color: #000000;
+  color: #333333; /* Changed from #000000 to #333333 */
   cursor: pointer;
   height: 25px;
   font-size: 16px;
@@ -248,7 +248,7 @@ form button{
   cursor: pointer;
   font-size: 17px;
   border-radius: 4px;
-  background: #6A93F8;
+  background: #333333; /* Changed from #000000 to #333333 */
 }
 
 @media (max-width: 660px){

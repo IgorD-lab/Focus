@@ -1,42 +1,75 @@
 /* Default horizontal layout */
 .card-body {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.card-title, .card-description {
-    flex: 1 1 auto;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.card-title,
+.card-description {
+  flex: 1 1 auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card-buttons {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  padding-top: 4rem; /* Increase top padding */
+  padding-bottom: 4rem; /* Increase bottom padding */
+}
+
+.todo-container {
+  overflow: auto;
+  height: 49rem;
+}
+
+.todo-card {
+  margin-bottom: 3rem;
+}
+
+.todo-card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todo-title,
+.todo-description {
+  flex-grow: 1;
+  overflow: hidden; /* Hide overflow to prevent text from overflowing */
+  text-overflow: ellipsis; /* Show ellipsis (...) for text that overflows */
+  white-space: nowrap; /* Keep text on a single line */
+  padding: 0.5rem;
+  max-width: 50%; /* Adjust the max-width as needed */
+}
+
+.todo-actions {
+  display: flex;
+  align-items: center;
+  margin-left: 0.5rem;
 }
 
 /* Breakpoint for switching to vertical layout */
 @media (max-width: 768px) {
-    .card-body {
-        flex-direction: column;
-        align-items: stretch;
-    }
+  .card-body {
+    flex-direction: column;
+    align-items: stretch;
+  }
 
-    .card-title, .card-description {
-        white-space: normal;
-    }
+  .card-title,
+  .card-description {
+    white-space: normal;
+  }
 
-    .card-buttons {
-        justify-content: space-between;
-        width: 100%;
-        margin-top: 10px;
-    }
-}
-
-.container {
-    padding-top: 4rem; /* Increase top padding */
-    padding-bottom: 4rem; /* Increase bottom padding */
+  .card-buttons {
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+  }
 }

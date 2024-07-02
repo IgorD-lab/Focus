@@ -1,3 +1,5 @@
+// AI was used for wrigting rewriting and correcting errors in code below
+
 document.addEventListener('DOMContentLoaded', function() {
     const flashcards = document.querySelectorAll('[data-question-id]');
     let currentCard = 0;
@@ -19,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateScoreDisplay() {
-        document.getElementById('score').textContent = 'Score: ' + score;
+        document.getElementById('current-score').textContent = score;
     }
 
     flashcards.forEach((card, index) => {

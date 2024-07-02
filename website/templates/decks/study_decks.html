@@ -10,16 +10,41 @@
 <h1 class="study-decks-title">Your Study Decks</h1>
 
 <div class="new-deck-link">
-    <a href="{{ url_for('views.new_deck') }}">Create New Deck</a>
+    <button class="button-30" onclick="window.location.href='{{ url_for('views.new_deck') }}'">Create New Deck</button>
 </div>
 
 <ul class="deck-list">
     {% for deck in decks %}
-    <li class="deck-item" onclick="window.location='{{ url_for('views.view_deck', deck_id=deck.id) }}'">
-        {{ deck.title }}
-    </li>
+    <div class="deck-li-container">
+        <li class="deck-item" onclick="window.location='{{ url_for('views.view_deck', deck_id=deck.id) }}'">
+                {{ deck.title }}
+        </li>
+        <button class="button-30-bad" onclick="deleteDeck({{ deck.id }})">Delete</button>
+    </div>
     {% endfor %}
 </ul>
 
+<script>
+function deleteDeck(deckId) {
+    fetch(`/study-decks/${deckId}/delete`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(response => {
+        if (response.ok) {
+            location.reload();
+        } else {
+            return response.json().then(data => {
+                console.error('Error:', data);
+                alert('Failed to delete deck: ' + (data.message || 'Unknown error'));
+            });
+        }
+    }).catch(error => {
+        console.error('Fetch error:', error);
+        alert('Failed to delete deck: ' + error.message);
+    });
+}
+</script>
+
 {% endblock %}
-<!--  Lists all decks with options to view, edit, or delete them, and a button to create a new deck. -->

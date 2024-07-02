@@ -1,9 +1,16 @@
 h1 {
-    color: white; /* Set text color to white */
+    color: var(--text-color); /* Set text color to white */
     text-align: center; /* Center text horizontally */
     position: absolute; /* Positioning the element absolutely */
     font-size: 100px;
     top: 50%; /* Center vertically */
     left: 50%; /* Center horizontally */
     transform: translate(-50%, -50%); /* Adjust the position to truly center */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Example of a subtle shadow */
+    backdrop-filter: blur(10px); /* Example of backdrop-filter blur */
+    background-color: rgba(255, 255, 255, 0.171); /* Adjust the transparency as needed */
+    border-radius: 1rem;
+    padding: 5px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
 }

@@ -31,7 +31,7 @@
           <div class="form-group mt-3">
             <button
               type="submit"
-              class="btn btn-primary btn-block"
+              class="button-30"
               style="width: 100%;"
             >
               Save
@@ -42,31 +42,35 @@
     </div>
     <div class="col-md-6">
       <div class="mb-3">
-        <div class="d-flex justify-content-between p-2 bg-white rounded">
-          <span class="font-weight-bold">Title</span>
-          <span class="font-weight-bold">Description</span>
-          <span class="font-weight-bold text-right">Delete</span>
+        <div class="d-flex justify-content-center p-2 bg-white rounded">
+          <span class="font-weight-bold">Tasks</span>
+          <!-- <span class="font-weight-bold">Description</span>
+          <span class="font-weight-bold text-right">Delete</span> -->
         </div>
         <hr />
-        <div class="overflow-auto" style="height: 49rem;">
+        <div class="overflow-y-scroll no-scrollbar todo-container px-4" style="height: 49rem">
           {% for todo in user.todo %}
-          <div class="card mb-3">
-            <div class="card-body">
-              <div class="d-flex justify-content-between">
-                <div class="p-2 flex-grow-1">
-                  <p>{{ todo.title }}</p>
-                </div>
-                <div class="p-2 flex-grow-1">
-                  <p>{{ todo.description }}</p>
-                </div>
-                <div class="ml-2">
-                  <button onclick="completeTodo('{{ todo.id }}')" class="btn btn-success">
-                    <span>&check;</span>
-                  </button>
-                  <button onclick="deleteTodo('{{ todo.id }}')" class="btn btn-danger ml-3">
-                    <span>Delete</span>
-                  </button>
-                </div>
+          <div class="card todo-card my-3">
+            <div class="card-body todo-card-body">
+              <div class="todo-title">
+                <p>{{ todo.title }}</p>
+              </div>
+              <div class="todo-description">
+                <p><span>&#8226;</span> {{ todo.description }}</p>
+              </div>
+              <div class="todo-actions">
+                {% if todo.completed %}
+                <button onclick="completeTodo('{{ todo.id }}')" class="button-30-good-s">
+                  <span>&check;</span>
+                </button>
+                {% else %}
+                <button onclick="completeTodo('{{ todo.id }}')" class="button-30-s">
+                  <span>&check;</span>
+                </button>
+                {% endif %}
+                <button onclick="deleteTodo('{{ todo.id }}')" class="button-30-bad-s" style="margin-left: 5px;">
+                  <span>X</span>
+                </button>
               </div>
             </div>
           </div>

@@ -8,7 +8,7 @@ class User(db.Model, UserMixin): # UserMixin must be inherited in User object to
     id = db.Column(db.Integer, primary_key=True) # Unique integer that defines user member
     email = db.Column(db.String(150), unique=True) # string size must be defined, 2 users cant have same email
     password = db.Column(db.String(150))
-    username = db.Column(db.String(150))
+    # username = db.Column(db.String(150))
     notes = db.relationship('Note') # connect user with their notes, we can access all the notes user created with this column, 
     # Note for relationship in sql if it was foreign key we would use note lowercase (dumb design)
     todo= db.relationship('Todo')
@@ -16,13 +16,11 @@ class User(db.Model, UserMixin): # UserMixin must be inherited in User object to
     
 class Note(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100))
-    data = db.Column(db.String(10000))
+    title = db.Column(db.String(100), nullable=True)  # Allow title to be nullable
+    data = db.Column(db.String(10000), nullable=True)  # Allow data to be nullable
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id')) 
-    # db.ForeignKey means we must pass id of existing user when we create note object (one to many relationship), one user has many notes,
-    # lower case user because User in sql is seen as user and .id for id of user .email would be if we connected them by user email
-    
+   
 class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(50), nullable=False)
@@ -38,6 +36,6 @@ class Deck(db.Model):
 
 class Flashcard(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    question = db.Column(db.String(1000), nullable=False)
-    answer = db.Column(db.String(1000), nullable=False)
+    question = db.Column(db.String(900), nullable=False)
+    answer = db.Column(db.String(900), nullable=False)
     deck_id = db.Column(db.Integer, db.ForeignKey('deck.id'))

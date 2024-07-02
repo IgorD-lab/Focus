@@ -4,10 +4,12 @@
 <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/decks.css') }}">
 </head>
-<form action="" method="post">
-    Deck Title: <input type="text" name="title"><br>
-    <input type="submit" value="Create Deck">
-</form>
+<div class="center-container">
+    <form action="" method="post">
+        Deck Title: <input type="text" name="title" class="centered-input"><br>
+        <button type="submit" class="centered-button button-30">Create Deck</button>
+    </form>
+</div>
 {% endblock %}
 <!-- Form to create a new deck. -->
 

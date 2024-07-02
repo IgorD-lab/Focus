@@ -6,30 +6,38 @@
     <script src="{{ url_for('static', filename='js/decks.js') }}"></script>
 </head>
 <div class="quiz-wrapper">
-    <p id="score" style="text-align: center;">Score: 0</p>
     <div id="quiz-container">
-        {% for flashcard in flashcards %}
-        <div data-question-id="{{ loop.index }}" style="display:none;">
-            <div class="card-container">
-                <div class="card">
+      {% for flashcard in flashcards %}
+      <div data-question-id="{{ loop.index }}" style="display:none;">
+          <div class="card-container">
+              <div class="card">
                   <div class="front">
-                    <h1>Question: </h1> 
-                    <p>{{ flashcard.question }}</p>
+                      <p>{{ flashcard.question }}</p>
                   </div>
                   <div class="back">
-                    <h1>Answer</h1>
-                    <p>{{ flashcard.answer }}</p>
+                      <p>{{ flashcard.answer }}</p>
                   </div>
-                </div>
-            </div>
-            <div class="button-container">
-                <button class="correct-btn">Correct</button>
-                <button class="incorrect-btn">Incorrect</button>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-    <p id="completion-message" style="display:none; text-align: center;">You have finished the quiz!</p>
-    <button id="restart-quiz-btn" style="display:none;">Restart Quiz</button>
+              </div>
+          </div>
+          <div class="button-container">
+              <button class="button-30">Correct</button>
+              <button class="button-30-bad">Incorrect</button>
+          </div>
+      </div>
+      {% endfor %}
+  </div>
+  <div class="final-score-container">
+    <p id="score" style="text-align: center; color: var(--text-color-dark); font-size: 40px; margin-bottom: 0px;">Score: <span id="current-score">0</span> / {{ flashcards|length }}</p>
+    <p id="completion-message" style="display:none; text-align: center; font-size: 30px;">You are out of flashcards!</p>
+  </div>
+    <button id="restart-quiz-btn" style="display:none;" class="button-30">Finish Quiz</button>
 </div>
+<script>
+  document.querySelectorAll('.card-container').forEach(container => {
+    container.addEventListener('click', function() {
+      const card = this.querySelector('.card');
+      card.classList.toggle('flipped');
+    });
+  });
+</script>
 {% endblock %}

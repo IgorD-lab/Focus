@@ -1,32 +1,25 @@
 {% extends "layout.html" %} {% block title %}Login{% endblock %} {% block content %}
-<form method="POST" class="flex flex-col items-center">
-  <h3 class="text-center text-3xl text-textD">Login</h3>
-  <div class="my-4">
-    <label for="email" class="block mb-2 text-textD">Email Address</label>
-    <input
-      type="email"
-      class="border-2 border-gray-200 rounded w-full py-2 px-4"
-      id="email"
-      name="email"
-      placeholder="Enter email"
-    />
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}"/>
+</head>
+
+<div class="login-container">
+  <div class="wrapper">
+    <form method="POST" class="flex flex-col items-center">
+      <h1>Login</h1>
+      <div class="input-box">
+        <input type="email" placeholder="Email Address" id="email" name="email" required>
+        <i class='bx bxs-user'></i>
+      </div>
+      <div class="input-box">
+        <input type="password" placeholder="Password" id="password" name="password" required>
+        <i class='bx bxs-lock-alt' ></i>
+      </div>
+      <button type="submit" class="btn">Login</button>
+      <div class="register-link">
+        <p>Dont have an account? <a href="/register">Register</a></p>
+      </div>
+    </form>
   </div>
-  <div class="my-4">
-    <label for="password" class="block mb-2 text-textD">Password</label>
-    <input
-      type="password"
-      class="border-2 border-gray-200 rounded w-full py-2 px-4"
-      id="password"
-      name="password"
-      placeholder="Enter password"
-    />
-  </div>
-  <br />
-  <button
-    type="submit"
-    class="bg-primaryD hover:bg-hoverButtonD text-textD font-bold py-2 px-4 rounded"
-  >
-    Submit
-  </button>
-</form>
+</div>
 {% endblock %}

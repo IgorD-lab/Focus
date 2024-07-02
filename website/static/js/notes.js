@@ -1,3 +1,5 @@
+// Outside resources were used in writing parts of this code
+
 const addBox = document.querySelector(".add-box"),
 popupBox = document.querySelector(".popup-box"),
 popupTitle = popupBox.querySelector("header p"),

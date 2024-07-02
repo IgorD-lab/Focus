@@ -1,3 +1,5 @@
+// 
+
 // Define the timer and the interval
 let timer = 25 * 60;
 let interval;
@@ -56,16 +58,11 @@ function resetTimer(newTime) {
 
 // Event listeners for the buttons
 startButton.addEventListener("click", () => {
-  const playIcon = document.getElementById("play-icon");
-  const pauseIcon = document.getElementById("pause-icon");
-
   if (!isRunning) {
-    playIcon.classList.add("hidden");
-    pauseIcon.classList.remove("hidden");
+    startButton.textContent = "pause";
     startTimer();
   } else {
-    playIcon.classList.remove("hidden");
-    pauseIcon.classList.add("hidden");
+    startButton.textContent = "start";
     pauseTimer();
   }
 });
