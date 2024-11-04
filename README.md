@@ -2,11 +2,11 @@
 
 **Current Status and Future Plans**  
 
-This project is currently in maintenance mode and won't receive active development updates. However, exciting plans are in the works! We're envisioning a remake using a powerful and scalable tech stack: Django for the backend and React for the frontend.
+This project is currently in maintenance mode and won't receive active development updates. However, exciting plans are in the works! I'm envisioning a remake using a powerful and scalable tech stack: Django for the backend and React for the frontend.
 
 **Open-source Invitation**  
 
-Feel free to use any part of the existing codebase for your own projects. We understand there might be some exploratory or experimental code as this project was primarily a learning experience. Don't hesitate to reach out if you have any questions!
+Feel free to use any part of the existing codebase for your own projects. I understand there might be some exploratory or experimental code as this project was primarily a learning experience. Don't hesitate to reach out if you have any questions!
 
 **Reasons for Abandonment:**
 
